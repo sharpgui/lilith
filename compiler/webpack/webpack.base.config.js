@@ -94,7 +94,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: join(__dirname, '../public/views/index.html')
+      template: join(__dirname, '..', '/public/views/index.html'),
+      favicon: join(__dirname, '..', '/public/icon/favicon.ico')
     })
   ],
   performance: {
