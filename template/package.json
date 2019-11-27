@@ -1,0 +1,23 @@
+{
+  "name": "@qfe/react-cli",
+  "version": "0.0.9",
+  "description": "qfe 命令行工具",
+  "main": "index.js",
+  "scripts": {
+    "dev": "lilith compile",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cli",
+    "webpack",
+    "babel",
+    "compiler"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
+  "devDependencies": {}
+}
