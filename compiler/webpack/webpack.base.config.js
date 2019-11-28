@@ -8,7 +8,7 @@ const { join } = require('path')
 
 module.exports = {
   mode: 'development',
-  entry: './src/index',
+  entry: './_temp/index',
   output: {
     filename: 'js/[name].js',
   },
@@ -88,6 +88,9 @@ module.exports = {
               configFile: path.resolve(__dirname, '../tsconfig.json'),
             },
           },
+          // {
+          //   loader: 'art-template-loader'
+          // }
         ],
       },
     ],
