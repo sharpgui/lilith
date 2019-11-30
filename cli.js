@@ -10,6 +10,7 @@ const { exit } = require('process')
 const question = require('./lib/inquire')
 const download = require('./lib/download')
 const configTsJs = require('./lib/configTsJs')
+const createDevelopTemplate = require('./lib/createDevelopTemplate')
 
 const log = console.log
 const logError = str => {
@@ -100,28 +101,28 @@ const setGit = answerObj => {
 }
 
 // 创建命令相关控制
-program
-  .version(package.version)
-  .command('create <appName> [<directory>]')
-  .action((appName, directory = '.', cmd) => {
-    // 询问package.json的相关属性
-    question(appName).then(answer => {
-      const { confirm, template } = answer
-      if (confirm) {
-        createBoilerplate(appName, directory, template)
-          .then(
-            res =>
-              res &&
-              setPackageJson({ ...answer, appName, directory }) &&
-              npmInstall(appName, directory) &&
-              setGit({ ...answer, appName, directory })
-          )
-          .catch(err => logError(err))
-      } else {
-        logError('canceled create boilerplate !!!!')
-      }
-    })
-  })
+// program
+//   .version(package.version)
+//   .command('create <appName> [<directory>]')
+//   .action((appName, directory = '.', cmd) => {
+//     // 询问package.json的相关属性
+//     question(appName).then(answer => {
+//       const { confirm, template } = answer
+//       if (confirm) {
+//         createBoilerplate(appName, directory, template)
+//           .then(
+//             res =>
+//               res &&
+//               setPackageJson({ ...answer, appName, directory }) &&
+//               npmInstall(appName, directory) &&
+//               setGit({ ...answer, appName, directory })
+//           )
+//           .catch(err => logError(err))
+//       } else {
+//         logError('canceled create boilerplate !!!!')
+//       }
+//     })
+//   })
 
 // 编译命令相关控制
 program.command('compile').action((directory, targetDirectory, cmd) => {
@@ -145,7 +146,11 @@ program.command('compile').action((directory, targetDirectory, cmd) => {
   } catch (err) {
     compileFunction()
   }
-  
 })
+
+program.command('create [<templateName>]').action((templateName = 'page') => {
+  createDevelopTemplate(templateName)
+})
+
 
 program.parse(process.argv)

@@ -8,7 +8,7 @@ const { join } = require('path')
 
 module.exports = {
   mode: 'development',
-  entry: './_temp/index',
+  entry: './.lilith/index',
   output: {
     filename: 'js/[name].js',
   },

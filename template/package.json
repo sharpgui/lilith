@@ -1,5 +1,5 @@
 {
-  "name": "@qfe/react-cli",
+  "name": "@qfed/lilith-template",
   "version": "0.0.9",
   "description": "qfe 命令行工具",
   "main": "index.js",
