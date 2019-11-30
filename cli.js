@@ -131,8 +131,7 @@ program.command('compile').action((directory, targetDirectory, cmd) => {
   let compileFunction = () => {}
   try {
     // 从工作目录中直接去获取build配置文件，保证 react-cli 运行的版本与 yarn dev 运行的版本一致
-    // compileFunction = require(`${process.cwd()}/node_modules/@qfe/webpack-babel-compiler/build/build.dev.js`)
-    compileFunction = require(`./compiler/build/build.dev.js`)
+    compileFunction = require(`./node_modules/@qfed/lilith-compiler/build/build.dev.js`)
   } catch (e) {
     logError(e)
   }
