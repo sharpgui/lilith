@@ -1,19 +1,20 @@
 #!/usr/bin/env node
 
-const program = require("commander");
-const chalk = require("chalk");
-const package = require("./package.json");
-const fs = require("fs-extra");
-const path = require("path");
-const { execSync, exec } = require("child_process");
-const { exit } = require("process");
-const question = require("./lib/inquire");
-const download = require("./lib/download");
-const configTsJs = require("./lib/configTsJs");
+const program = require('commander')
+const chalk = require('chalk')
+const package = require('./package.json')
+const fs = require('fs-extra')
+const path = require('path')
+const { execSync, exec } = require('child_process')
+const { exit } = require('process')
+const question = require('./lib/inquire')
+const download = require('./lib/download')
+const configTsJs = require('./lib/configTsJs')
 const createTemplate = require('./lib/createTemplate')
 const config = require('./config')
+const createDevelopTemplate = require('./lib/createDevelopTemplate')
 
-const log = console.log;
+const log = console.log
 const logError = str => {
   log(chalk.red(str));
   exit(1);
@@ -163,8 +164,7 @@ program.command("compile").action((directory, targetDirectory, cmd) => {
   let compileFunction = () => {};
   try {
     // 从工作目录中直接去获取build配置文件，保证 react-cli 运行的版本与 yarn dev 运行的版本一致
-    // compileFunction = require(`${process.cwd()}/node_modules/@qfe/webpack-babel-compiler/build/build.dev.js`)
-    compileFunction = require(`./compiler/build/build.dev.js`);
+    compileFunction = require(`./node_modules/@qfed/lilith-compiler/build/build.dev.js`)
   } catch (e) {
     logError(e);
   }
@@ -181,4 +181,9 @@ program.command("compile").action((directory, targetDirectory, cmd) => {
   }
 });
 
-program.parse(process.argv);
+program.command('create [<templateName>]').action((templateName = 'page') => {
+  createDevelopTemplate(templateName)
+})
+
+
+program.parse(process.argv)
