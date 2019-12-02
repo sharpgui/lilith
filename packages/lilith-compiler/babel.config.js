@@ -21,6 +21,15 @@ module.exports = () => {
           legacy: true,
         },
       ],
+      [
+        "import",
+        {
+          "libraryName": "antd",
+          "libraryDirectory": "es",
+          "style": true
+        },
+        "antd"
+      ],
       '@babel/plugin-proposal-export-namespace-from',
       '@babel/plugin-proposal-throw-expressions',
       '@babel/plugin-syntax-dynamic-import',
