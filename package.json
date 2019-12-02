@@ -18,7 +18,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@qfed/lilith-compiler": "^0.0.2",
+    "@qfed/lilith-compiler": "^0.0.3",
     "art-template": "^4.13.2",
     "art-template-loader": "^1.4.3",
     "chalk": "^2.4.2",
