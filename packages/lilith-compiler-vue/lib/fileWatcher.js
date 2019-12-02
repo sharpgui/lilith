@@ -1,7 +1,7 @@
 // 监听文件变化，并将更改后的内容注入到.lilith目录中
 const fs = require('fs-extra')
 const chokidar = require('chokidar')
-const { join } = require('path')
+const { join, relative } = require('path')
 const { createNewModule } = require('quickly-template/lib/createTemplate')
 const fileWatcher = chokidar.watch(`${process.cwd()}/src`)
 
@@ -15,9 +15,9 @@ fileWatcher.on('all', function(event, path) {
   switch (event) {
     case 'change':
     case 'add': {
-      // TODO 编译
+      const relativePath = relative(path, process.cwd())
       from = path
-      to = join(path, '../..', '.lilith')
+      to = join(path, relativePath, '.lilith', from.split('/src/')[1].replace(filename, ''))
       break
     }
     case 'unlink': {

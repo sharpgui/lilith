@@ -7,7 +7,7 @@ const { createNewModule } = require('quickly-template/lib/createTemplate')
 require('../lib/fileWatcher')
 
 module.exports = function(webpackSettings = {}) {
-  createNewModule({ globPattern: 'src/*', target: '.lilith', renderOptions: { name: 'Template' }, name: ''})
+  createNewModule({ globPattern: 'src/*.tsx', target: '.lilith', renderOptions: { name: 'Template' }, name: ''})
   const compiler = webpack(merge(webpackDevConfig, webpackSettings))
 
   const server = new WebpackDevServer(compiler, {
