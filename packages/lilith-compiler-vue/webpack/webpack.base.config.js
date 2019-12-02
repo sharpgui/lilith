@@ -58,7 +58,10 @@ module.exports = {
               plugins: [autoprefixer(), cssnano({ preset: 'default' })],
             },
           },
-          'less-loader',
+          { 
+            loader: 'less-loader',
+            options: { javascriptEnabled: true },
+          }
         ],
       },
       {
