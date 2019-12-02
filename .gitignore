@@ -5,3 +5,4 @@ test.js
 **/_temp/**
 _template
 **/.lilith/**
+/template/public

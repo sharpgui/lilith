@@ -807,10 +807,10 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@qfed/lilith-compiler@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@qfed/lilith-compiler/-/lilith-compiler-0.0.1.tgz#1e0c3c4a4c839db74926db7973e444386905071a"
-  integrity sha512-jrAnLZYZk3RTRJYjAk0Ak5HG1YK2Mki/XS9C8aLi6asUPx5a9yi7AYX9aY5+tlezOoqUhf6NEhp9HPH5PAdCkg==
+"@qfed/lilith-compiler@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@qfed/lilith-compiler/-/lilith-compiler-0.0.2.tgz#6549ad3e28962041051b57fb20bc179ac7664548"
+  integrity sha512-khVjuaEPwxGE0emdywfhwQjWple+RQRgJN/YnjUOa1wPYrLM0hMghzdEK75ik5WGt0LuLPXgtjDnLHlGUZ0mEg==
   dependencies:
     "@babel/cli" "^7.5.5"
     "@babel/core" "^7.5.5"
@@ -829,10 +829,12 @@
     core-js "^3.2.1"
     css-loader "^3.2.0"
     cssnano "^4.1.10"
+    fs-extra "^8.1.0"
     html-webpack-plugin "^3.2.0"
     less-loader "^5.0.0"
     node-sass "^4.12.0"
     postcss-loader "^3.0.0"
+    quickly-template "^1.2.1"
     regenerator-runtime "^0.13.3"
     sass-loader "^7.3.1"
     style-loader "^1.0.0"
