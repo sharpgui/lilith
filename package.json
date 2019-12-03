@@ -1,6 +1,6 @@
 {
   "name": "@qfed/lilith",
-  "version": "0.0.2",
+  "version": "0.0.5",
   "description": "qfe 命令行工具",
   "main": "index.js",
   "scripts": {
@@ -17,19 +17,42 @@
   ],
   "author": "",
   "license": "ISC",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier-eslint --write",
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "semi": false,
+    "singleQuote": true
+  },
   "dependencies": {
-    "@qfed/lilith-compiler": "^0.0.1",
+    "@qfed/lilith-compiler": "^0.0.3",
     "art-template": "^4.13.2",
     "art-template-loader": "^1.4.3",
     "chalk": "^2.4.2",
     "chokidar": "^3.3.0",
     "commander": "^3.0.0",
     "core-js": "^3.2.1",
-    "findup-sync": "^4.0.0",
     "download-git-repo": "^3.0.2",
+    "findup-sync": "^4.0.0",
     "fs-extra": "^8.1.0",
     "inquirer": "^7.0.0",
     "quickly-template": "^1.2.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "eslint": "^6.7.2",
+    "eslint-plugin-react": "^7.17.0",
+    "husky": "^3.1.0",
+    "lint-staged": "^9.5.0",
+    "prettier-eslint-cli": "^5.0.0"
+  }
 }
