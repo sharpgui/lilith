@@ -828,10 +828,10 @@
     "@nodelib/fs.scandir" "2.1.3"
     fastq "^1.6.0"
 
-"@qfed/lilith-compiler@^0.0.3":
+"@qfed/lilith-compiler@^0.0.6":
   version "0.0.3"
-  resolved "https://registry.npm.taobao.org/@qfed/lilith-compiler/download/@qfed/lilith-compiler-0.0.3.tgz?cache=0&sync_timestamp=1575279408652&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40qfed%2Flilith-compiler%2Fdownload%2F%40qfed%2Flilith-compiler-0.0.3.tgz#95e478e06681dda7c7ba64cc95fe76df16ec3882"
-  integrity sha1-leR44GaB3afHumTMlf523xbsOII=
+  resolved "https://registry.npmjs.org/@qfed/lilith-compiler/-/lilith-compiler-0.0.3.tgz#95e478e06681dda7c7ba64cc95fe76df16ec3882"
+  integrity sha512-paMmHbbVBNj5VcPm9ckR7RakYJGFgYpKnSqx3y6koAt2RJi0Go2IF0/AhrN3mImWjKOx5uP2cuua39HT5NySrw==
   dependencies:
     "@babel/cli" "^7.5.5"
     "@babel/core" "^7.5.5"
