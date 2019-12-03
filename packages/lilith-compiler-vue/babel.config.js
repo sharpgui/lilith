@@ -5,35 +5,35 @@ module.exports = () => {
         '@babel/preset-env',
         {
           targets: {
-            browsers: ['> 1%', 'last 2 versions', 'iOS >= 8', 'Android >= 4'],
+            browsers: ['> 1%', 'last 2 versions', 'iOS >= 8', 'Android >= 4']
           },
           useBuiltIns: 'usage',
-          corejs: 3,
-        },
+          corejs: 3
+        }
       ],
-      '@babel/preset-react',
+      '@babel/preset-react'
     ],
     plugins: [
       '@babel/plugin-transform-runtime',
       [
         '@babel/plugin-proposal-decorators',
         {
-          legacy: true,
-        },
+          legacy: true
+        }
       ],
       [
-        "import",
+        'import',
         {
-          "libraryName": "antd",
-          "libraryDirectory": "es",
-          "style": true
+          libraryName: 'antd',
+          libraryDirectory: 'es',
+          style: true
         },
-        "antd"
+        'antd'
       ],
       '@babel/plugin-proposal-export-namespace-from',
       '@babel/plugin-proposal-throw-expressions',
       '@babel/plugin-syntax-dynamic-import',
-      '@babel/plugin-proposal-class-properties',
-    ],
+      '@babel/plugin-proposal-class-properties'
+    ]
   }
 }
