@@ -13,7 +13,7 @@ export default class {{name|pascal}} extends Component {
   render() {
     return (
       <div>
-        Hello World !
+        Hello World ! {{name}}
       </div>
     )
   }
