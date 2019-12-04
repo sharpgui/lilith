@@ -1,18 +1,11 @@
 #!/usr/bin/env node
 
 const program = require('commander')
-const chalk = require('chalk')
 const path = require('path')
-const { exit } = require('process')
 const createTemplate = require('./lib/createTemplate')
 const config = require('./config')
 const createDevelopTemplate = require('./lib/createDevelopTemplate')
-const log = console.log
-const logError = str => {
-  log(chalk.red(str))
-  exit(1)
-}
-const logCorrect = str => log(chalk.keyword('green')(`\n${str}\n`))
+const logger = require('./lib/logger')
 
 program
   .command('new <template> <name> [target]')
@@ -44,8 +37,8 @@ program
 
 // 编译命令相关控制
 program.command('compile').action((directory, targetDirectory, cmd) => {
-  logCorrect(`当前工作目录: ${process.cwd()}`)
-  logCorrect('开始编译 >>>>>>>>>>>>>>>>>>>>>>')
+  logger.info(`当前工作目录: ${process.cwd()}`)
+  logger.info('开始编译 >>>>>>>>>>>>>>>>>>>>>>')
   let compileFunction = () => {}
   try {
     // 从工作目录中直接去获取build配置文件，保证 react-cli 运行的版本与 yarn dev 运行的版本一致
@@ -54,10 +47,10 @@ program.command('compile').action((directory, targetDirectory, cmd) => {
       process.env.NODE_ENV === 'dev'
         ? '../lilith-compiler/build/build.dev.js'
         : '@qfed/lilith-compiler/build/build.dev.js'
-    log('load compileFunciton from', compileFuncitonPath)
+    logger.info('load compileFunciton from', compileFuncitonPath)
     compileFunction = require(compileFuncitonPath)
   } catch (e) {
-    logError(e)
+    logger.error(e)
   }
   const relativePath = path.relative(
     __dirname,
@@ -65,7 +58,7 @@ program.command('compile').action((directory, targetDirectory, cmd) => {
   )
   try {
     const webpackSettings = require(`./${relativePath}`)
-    console.info('读取本地配置', relativePath)
+    logger.info('读取本地配置', relativePath)
     compileFunction(webpackSettings)
   } catch (err) {
     compileFunction()
