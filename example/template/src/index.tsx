@@ -1,13 +1,18 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
-import { getData } from './services'
+import { login } from './services'
 
 
 export default class {{name|pascal}} extends Component {
-  componentDidMount() {
-    getData().then(res => {
-      console.log(res)
+
+  componentDidMount() {   
+    login
+    .register({ param: 'param', version: 1 })
+    .then(({ code, data, message }) => {
+      // 因为有确定的 Response 类型 TS可以提供精准的提示，
+      console.log(code, data.name, message)
     })
+        
   }
 
   render() {
