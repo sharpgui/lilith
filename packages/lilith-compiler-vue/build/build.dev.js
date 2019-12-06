@@ -3,12 +3,10 @@ const WebpackDevServer = require('webpack-dev-server')
 const webpackDevConfig = require('../webpack/webpack.dev.config.js')
 const merge = require('webpack-merge')
 const { join } = require('path')
-// const fileWatcher = require('../lib/fileWatcher')
 
 module.exports = function(webpackSettings) {
   console.log(JSON.stringify(webpackSettings))
-  // createNewModule({ globPattern: 'src/*.tsx', target: '.lilith', renderOptions: { name: 'Template' }, name: ''})
-  // if (!webpackSettings) fileWatcher()
+
   const compiler = webpack(merge(webpackDevConfig, webpackSettings))
 
   const server = new WebpackDevServer(compiler, {

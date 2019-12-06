@@ -10,11 +10,13 @@ module.exports = function(webpackSettings) {
   createNewModule({
     globPattern: 'src/*.tsx',
     target: '.lilith',
-    renderOptions: { name: 'Template' },
+    renderOptions: { name: 'Lilith Template' },
     name: ''
   })
   fileWatcher()
-  const compiler = webpack(merge(webpackDevConfig, webpackSettings))
+  const compiler = webpack(
+    merge(webpackDevConfig, { entry: './.lilith/index' }, webpackSettings)
+  )
 
   const server = new WebpackDevServer(compiler, {
     stats: {
