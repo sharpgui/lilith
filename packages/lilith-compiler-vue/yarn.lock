@@ -6862,10 +6862,10 @@ quick-lru@^4.0.1:
   resolved "https://registry.npmjs.org/quick-lru/-/quick-lru-4.0.1.tgz#5b8878f113a58217848c6482026c73e1ba57727f"
   integrity sha512-ARhCpm70fzdcvNQfPoy49IaanKkTlRWF2JMzqhcJbhSFRZv7nPTvZJdcY7301IPmvW+/p0RgIWnQDLJxifsQ7g==
 
-quickly-template@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.npm.taobao.org/quickly-template/download/quickly-template-1.2.1.tgz#ae25489ada274d1b0814835d6033680846afccab"
-  integrity sha1-riVImtonTRsIFINdYDNoCEavzKs=
+quickly-template@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.npmjs.org/quickly-template/-/quickly-template-1.2.2.tgz#9290afa781c12e43126a9221846476374de7a1d2"
+  integrity sha512-jFnVoTFKl+N/H2qHYT/BIxjjrIdB9lGFm5p03+6Tv9Fx4f6K8kBy8P8ngIkk2CGHBX2s/YCwJakZemMwJ53VyQ==
   dependencies:
     art-template "^4.13.2"
     chalk "^2.4.2"

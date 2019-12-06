@@ -6,7 +6,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { join } = require('path')
 
 module.exports = {
-  mode: 'development',
   entry: './.lilith/index',
   output: {
     filename: 'js/[name].js'
