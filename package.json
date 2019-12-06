@@ -35,7 +35,7 @@
     "singleQuote": true
   },
   "dependencies": {
-    "@qfed/lilith-compiler": "^0.0.6",
+    "@qfed/lilith-compiler": "^0.0.3",
     "art-template": "^4.13.2",
     "art-template-loader": "^1.4.3",
     "chalk": "^2.4.2",
@@ -47,7 +47,7 @@
     "fs-extra": "^8.1.0",
     "inquirer": "^7.0.0",
     "log4js": "^6.1.0",
-    "quickly-template": "^1.2.1"
+    "quickly-template": "^1.2.2"
   },
   "devDependencies": {
     "eslint": "^6.7.2",

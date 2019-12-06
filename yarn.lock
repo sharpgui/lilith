@@ -7484,6 +7484,21 @@ quickly-template@^1.2.1:
     vinyl-fs "^3.0.3"
     yargs "^13.2.2"
 
+quickly-template@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.npmjs.org/quickly-template/-/quickly-template-1.2.2.tgz#9290afa781c12e43126a9221846476374de7a1d2"
+  integrity sha512-jFnVoTFKl+N/H2qHYT/BIxjjrIdB9lGFm5p03+6Tv9Fx4f6K8kBy8P8ngIkk2CGHBX2s/YCwJakZemMwJ53VyQ==
+  dependencies:
+    art-template "^4.13.2"
+    chalk "^2.4.2"
+    debug "^4.1.1"
+    findup-sync "^3.0.0"
+    glob "^7.1.3"
+    lodash "^4.17.13"
+    map-stream "^0.0.7"
+    vinyl-fs "^3.0.3"
+    yargs "^13.2.2"
+
 randombytes@^2.0.0, randombytes@^2.0.1, randombytes@^2.0.5:
   version "2.1.0"
   resolved "https://registry.npm.taobao.org/randombytes/download/randombytes-2.1.0.tgz#df6f84372f0270dc65cdf6291349ab7a473d4f2a"

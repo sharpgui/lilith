@@ -10,7 +10,7 @@ export default class {{name|pascal}} extends Component {
     .register({ param: 'param', version: 1 })
     .then(({ code, data, message }) => {
       // 因为有确定的 Response 类型 TS可以提供精准的提示，
-      console.log(code, data.name, message)
+      console.log(code, message)
     })
         
   }
@@ -18,7 +18,7 @@ export default class {{name|pascal}} extends Component {
   render() {
     return (
       <div>
-        Hello World ! {{name}}
+        Hello World !!! {{name}}
       </div>
     )
   }

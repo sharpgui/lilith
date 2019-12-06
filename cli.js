@@ -36,34 +36,42 @@ program
   })
 
 // 编译命令相关控制
-program.command('compile').action((directory, targetDirectory, cmd) => {
-  logger.info(`当前工作目录: ${process.cwd()}`)
-  logger.info('开始编译 >>>>>>>>>>>>>>>>>>>>>>')
-  let compileFunction = () => {}
-  try {
+/**
+ * lilith run  dev
+ * lilith run  dev h5
+ * lilith run  dev weapp
+ * lilith run build
+ */
+program
+  .command('run <mode> [type]')
+  .option('--mode <string>', '编译模式 dev build', 'dev')
+  .option('--type <string>', '编译类型 lilih h5 weapp', 'lilith')
+  .action((mode, type) => {
+    logger.info(type)
+    logger.info(`当前工作目录: ${process.cwd()}`)
+    let compileFunction = () => {}
     // 从工作目录中直接去获取build配置文件，保证 react-cli 运行的版本与 yarn dev 运行的版本一致
-
+    const currentBuildType = type === 'lilith' ? '.lilith' : ''
     const compileFuncitonPath =
       process.env.NODE_ENV === 'dev'
-        ? '../lilith-compiler/build/build.dev.js'
-        : '@qfed/lilith-compiler/build/build.dev.js'
+        ? `../lilith-compiler/build/build.dev${currentBuildType}.js`
+        : `@qfed/lilith-compiler/build/build.dev${currentBuildType}.js`
     logger.info('load compileFunciton from', compileFuncitonPath)
     compileFunction = require(compileFuncitonPath)
-  } catch (e) {
-    logger.error(e)
-  }
-  const relativePath = path.relative(
-    __dirname,
-    `${process.cwd()}/webpack.config.js`
-  )
-  try {
-    const webpackSettings = require(`./${relativePath}`)
-    logger.info('读取本地配置', relativePath)
-    compileFunction(webpackSettings)
-  } catch (err) {
-    compileFunction()
-  }
-})
+
+    try {
+      const webpackSettings = require(path.resolve(
+        `${config.context}/webpack.config.js`
+      ))
+      logger.info(
+        '读取本地配置',
+        path.resolve(`${config.context}/webpack.config.js`)
+      )
+      compileFunction(webpackSettings)
+    } catch (err) {
+      compileFunction()
+    }
+  })
 
 program.command('create [<templateName>]').action((templateName = 'page') => {
   createDevelopTemplate(templateName)
