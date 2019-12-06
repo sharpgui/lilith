@@ -29,7 +29,7 @@ program
     '当前使用的模板，模板可选范围即root下面指定的模板，支持简写即当前有模板page那么p,pa,pag等效'
   )
   .option('--name <string>', '新生成模块的名称')
-  .description('run setup commands for all envs')
+  .description('new <template> <name> [target]')
   .action(function(template, name, target, options) {
     const { context, root } = options
     createTemplate({ template, name, target, context, root })
@@ -37,25 +37,29 @@ program
 
 // 编译命令相关控制
 /**
- * lilith run  dev
- * lilith run  dev h5
- * lilith run  dev weapp
+ * lilith run dev
  * lilith run build
+ * lilith run template
+ * lilith run dev fex
+ * lilith run build fex
  */
 program
-  .command('run <mode> [type]')
-  .option('--mode <string>', '编译模式 dev build', 'dev')
-  .option('--type <string>', '编译类型 lilih h5 weapp', 'lilith')
-  .action((mode, type) => {
-    logger.info(type)
+  .command('run <mode> [source]')
+  .option('--mode <string>', '编译模式 template dev build', 'dev')
+  .option(
+    '--source <string>',
+    '编译源默认值 @qfed/lilith-compiler',
+    '@qfed/lilith-compiler'
+  )
+  .description('run <mode> [type]')
+  .action((mode, source = '@qfed/lilith-compiler') => {
     logger.info(`当前工作目录: ${process.cwd()}`)
     let compileFunction = () => {}
     // 从工作目录中直接去获取build配置文件，保证 react-cli 运行的版本与 yarn dev 运行的版本一致
-    const currentBuildType = type === 'lilith' ? '.lilith' : ''
-    const compileFuncitonPath =
-      process.env.NODE_ENV === 'dev'
-        ? `../lilith-compiler/build/build.dev${currentBuildType}.js`
-        : `@qfed/lilith-compiler/build/build.dev${currentBuildType}.js`
+    const currentSource =
+      process.env.NODE_ENV === 'dev' ? '../lilith-compiler' : source
+    const compileFuncitonPath = `${currentSource}/build/build.${mode}.js`
+
     logger.info('load compileFunciton from', compileFuncitonPath)
     compileFunction = require(compileFuncitonPath)
 
