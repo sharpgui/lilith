@@ -2,10 +2,11 @@
 
 const program = require('commander')
 const path = require('path')
-const createTemplate = require('./lib/createTemplate')
 const config = require('./config')
+
+const createTemplate = require('./lib/createTemplate')
 const createDevelopTemplate = require('./lib/createDevelopTemplate')
-const logger = require('./lib/logger')
+const compiler = require('./lib/compiler')
 
 program
   .command('new <template> <name> [target]')
@@ -53,28 +54,7 @@ program
   )
   .description('run <mode> [type]')
   .action((mode, source = '@qfed/lilith-compiler') => {
-    logger.info(`当前工作目录: ${process.cwd()}`)
-    let compileFunction = () => {}
-    // 从工作目录中直接去获取build配置文件，保证 react-cli 运行的版本与 yarn dev 运行的版本一致
-    const currentSource =
-      process.env.NODE_ENV === 'dev' ? '../lilith-compiler' : source
-    const compileFuncitonPath = `${currentSource}/build/build.${mode}.js`
-
-    logger.info('load compileFunciton from', compileFuncitonPath)
-    compileFunction = require(compileFuncitonPath)
-
-    try {
-      const webpackSettings = require(path.resolve(
-        `${config.context}/webpack.config.js`
-      ))
-      logger.info(
-        '读取本地配置',
-        path.resolve(`${config.context}/webpack.config.js`)
-      )
-      compileFunction(webpackSettings)
-    } catch (err) {
-      compileFunction()
-    }
+    compiler(mode, source)
   })
 
 program.command('create [<templateName>]').action((templateName = 'page') => {
