@@ -35,7 +35,7 @@
     "singleQuote": true
   },
   "dependencies": {
-    "@qfed/lilith-compiler": "^0.0.3",
+    "@qfed/lilith-compiler": "^0.0.4",
     "art-template": "^4.13.2",
     "art-template-loader": "^1.4.3",
     "chalk": "^2.4.2",
