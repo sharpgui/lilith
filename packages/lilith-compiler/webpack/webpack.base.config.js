@@ -1,16 +1,14 @@
 const autoprefixer = require('autoprefixer')
 const cssnano = require('cssnano')
-const { resolve } = require('path')
 const babelConfig = require('../babel.config')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { join } = require('path')
 
 module.exports = {
-  mode: 'development',
   entry: './.lilith/index',
   output: {
-    filename: 'js/[name].js',
+    filename: 'js/[name].js'
   },
   resolve: {
     extensions: [
@@ -21,8 +19,8 @@ module.exports = {
       '.scss',
       '.sass',
       '.less',
-      '.css',
-    ],
+      '.css'
+    ]
   },
   module: {
     rules: [
@@ -35,16 +33,16 @@ module.exports = {
           {
             loader: 'postcss-loader',
             options: {
-              plugins: [autoprefixer(), cssnano({ preset: 'default' })],
-            },
+              plugins: [autoprefixer(), cssnano({ preset: 'default' })]
+            }
           },
           {
             loader: 'sass-loader',
             options: {
-              outputStyle: 'expanded',
-            },
-          },
-        ],
+              outputStyle: 'expanded'
+            }
+          }
+        ]
       },
       {
         test: /\.(less)$/,
@@ -55,14 +53,14 @@ module.exports = {
           {
             loader: 'postcss-loader',
             options: {
-              plugins: [autoprefixer(), cssnano({ preset: 'default' })],
-            },
+              plugins: [autoprefixer(), cssnano({ preset: 'default' })]
+            }
           },
-          { 
+          {
             loader: 'less-loader',
-            options: { javascriptEnabled: true },
+            options: { javascriptEnabled: true }
           }
-        ],
+        ]
       },
       {
         test: /\.(js|jsx)$/,
@@ -71,9 +69,9 @@ module.exports = {
           'cache-loader',
           {
             loader: 'babel-loader',
-            options: babelConfig(),
-          },
-        ],
+            options: babelConfig()
+          }
+        ]
       },
       {
         test: /\.tsx?$/,
@@ -81,22 +79,22 @@ module.exports = {
           'cache-loader',
           {
             loader: 'babel-loader',
-            options: babelConfig(),
+            options: babelConfig()
           },
           {
             loader: 'ts-loader',
             options: {
               transpileOnly: true,
               allowTsInNodeModules: true,
-              configFile: path.resolve(__dirname, '../tsconfig.json'),
-            },
-          },
+              configFile: path.resolve(__dirname, '../tsconfig.json')
+            }
+          }
           // {
           //   loader: 'art-template-loader'
           // }
-        ],
-      },
-    ],
+        ]
+      }
+    ]
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -105,6 +103,6 @@ module.exports = {
     })
   ],
   performance: {
-    hints: false,
-  },
+    hints: false
+  }
 }
