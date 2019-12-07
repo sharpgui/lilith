@@ -5,7 +5,7 @@ const path = require('path')
 const config = require('./config')
 
 const createTemplate = require('./lib/createTemplate')
-const createDevelopTemplate = require('./lib/createDevelopTemplate')
+const create = require('./lib/create')
 const compiler = require('./lib/compiler')
 
 program
@@ -57,8 +57,13 @@ program
     compiler(mode, source)
   })
 
-program.command('create [<templateName>]').action((templateName = 'page') => {
-  createDevelopTemplate(templateName)
-})
+program
+  .command('create [<templateName>]')
+  .option('--type <string>', '创建的模版类型')
+  .option('--source <string>', 'scaffolding 的源链接')
+  .action((templateName = 'lilith-project', options) => {
+    const { type, source } = options
+    create(templateName, type, source)
+  })
 
 program.parse(process.argv)
