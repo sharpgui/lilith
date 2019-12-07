@@ -3,6 +3,7 @@
 webpack.config.js
 test.js
 **/_temp/**
-_template
+#_template
 **/.lilith/**
+lilith.log
 /template/public
