@@ -54,7 +54,8 @@ program
   )
   .description('run <mode> [type]')
   .action((mode, source = '@qfed/lilith-compiler') => {
-    compiler(mode, source)
+    let currentMode = mode === 'build' ? 'prod' : mode
+    compiler(currentMode, source)
   })
 
 program
