@@ -1,6 +1,6 @@
 const autoprefixer = require('autoprefixer')
 const cssnano = require('cssnano')
-const babelConfig = require('../babel.config')
+const babelConfig = require('../babel.lilith')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { join } = require('path')
