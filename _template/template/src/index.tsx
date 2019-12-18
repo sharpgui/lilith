@@ -18,5 +18,3 @@ export default class {{name|pascal}} extends Component {
     )
   }
 }
-
-render(<{{name|pascal}}></{{name|pascal}}>, document.getElementById('root'))

@@ -23,6 +23,6 @@
     "react-dom": "^16.12.0"
   },
   "devDependencies": {
-    "@qfed/lilith-compiler": "^0.0.4"
+    "@qfed/lilith-compiler": "^0.0.9"
   }
 }

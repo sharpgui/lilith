@@ -807,10 +807,10 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@qfed/lilith-compiler@^0.0.4":
-  version "0.0.4"
-  resolved "https://registry.npmjs.org/@qfed/lilith-compiler/-/lilith-compiler-0.0.4.tgz#b46f7cbaa48ddb8cec4388c91957ccc08fe500df"
-  integrity sha512-CH4d1PcR0MIsyzFr0707PD3utaIqf8GH3XNQzn+xKGz3J09yBw5mvDb6xmc0GW2cTvQdU9MLI3rI4/EZwcerFg==
+"@qfed/lilith-compiler@^0.0.9":
+  version "0.0.9"
+  resolved "https://registry.npm.taobao.org/@qfed/lilith-compiler/download/@qfed/lilith-compiler-0.0.9.tgz#a4023cf2832110a3081958f4bdc60e2b57290039"
+  integrity sha1-pAI88oMhEKMIGVj0vcYOK1cpADk=
   dependencies:
     "@babel/cli" "^7.5.5"
     "@babel/core" "^7.5.5"
