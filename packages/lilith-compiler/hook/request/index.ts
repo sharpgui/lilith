@@ -4,15 +4,15 @@ export interface IRequestOption extends AxiosRequestConfig {
   url: string
 }
 
-export interface IResponse {
+export interface RequestResponse {
   /** 业务code码 */
   code: string
   /** 提示信息 */
   message: string
   /** 返回数据 */
-  // data: {
-  //   [key: string]: any
-  // }
+  data?: {
+    [key: string]: any
+  }
 }
 /**
  * 处理传入的参数, 可以都data，不再需要根据请求method判断key 用params 还是用data
@@ -34,7 +34,7 @@ function transform(options) {
  * 发起请求
  * @param options
  */
-async function request<T extends IResponse>(
+async function request<T extends RequestResponse>(
   options: IRequestOption
 ): Promise<T> {
   const requestOptions = transform(options)
