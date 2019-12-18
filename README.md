@@ -8,3 +8,4 @@
 - [ ] README
 - [ ] 端口号自动增长
 - [ ] 指定config 文件位置
+- [ ] lilith log 优化只有error 时输出log，并且只有真正发生error 时创建log文件
