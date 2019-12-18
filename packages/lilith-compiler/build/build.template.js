@@ -4,15 +4,17 @@ const webpackDevConfig = require('../webpack/webpack.dev.config.js')
 const { createNewModule } = require('quickly-template/lib/createTemplate')
 const merge = require('webpack-merge')
 const { join } = require('path')
+const fs = require('fs-extra')
 const fileWatcher = require('../lib/fileWatcher')
 
 module.exports = function(webpackSettings) {
   createNewModule({
     globPattern: 'src/*.tsx',
-    target: '.lilith',
+    target: '.lilith/src',
     renderOptions: { name: 'LilithTemplate' },
     name: ''
   })
+  fs.copySync(join(__dirname, '../hook'), join(process.cwd(), './.lilith'))
   fileWatcher()
   const compiler = webpack(
     merge(webpackDevConfig, { entry: './.lilith/index' }, webpackSettings)
