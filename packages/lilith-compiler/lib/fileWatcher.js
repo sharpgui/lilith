@@ -22,13 +22,13 @@ function fileWatcher() {
       to = join(
         path,
         relativePath,
-        '.lilith',
+        '.lilith/src',
         from.split('/src/')[1].replace(filename, '')
       )
       break
     }
     case 'unlink': {
-      return fs.removeSync(join(path, '../..', '.lilith', filename))
+      return fs.removeSync(join(path, '../..', '.lilith/src', filename))
     }
     }
     event !== 'addDir' &&
