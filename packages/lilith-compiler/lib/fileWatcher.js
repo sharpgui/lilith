@@ -36,7 +36,7 @@ function fileWatcher() {
       createNewModule({
         globPattern: from,
         target: to,
-        renderOptions: { name: 'Lilith Template' },
+        renderOptions: { name: 'LilithTemplate' },
         name: ''
       })
   })

@@ -10,7 +10,7 @@ module.exports = function(webpackSettings) {
   createNewModule({
     globPattern: 'src/*.tsx',
     target: '.lilith',
-    renderOptions: { name: 'Lilith Template' },
+    renderOptions: { name: 'LilithTemplate' },
     name: ''
   })
   fileWatcher()
