@@ -1,7 +1,7 @@
 const download = require('download-git-repo')
 const inquirer = require('inquirer')
 const fs = require('fs-extra')
-const logger = require('./logger')
+const logger = require('../../lib/logger')
 
 module.exports = (url, directory) => {
   let tempUrl = url

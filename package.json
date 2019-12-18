@@ -46,7 +46,8 @@
     "fs-extra": "^8.1.0",
     "inquirer": "^7.0.0",
     "log4js": "^6.1.0",
-    "quickly-template": "^1.2.2"
+    "quickly-template": "^1.2.2",
+    "update-notifier": "^4.0.0"
   },
   "devDependencies": {
     "eslint": "^6.7.2",

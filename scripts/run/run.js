@@ -1,8 +1,9 @@
 const path = require('path')
 const fs = require('fs-extra')
+const updateNotifier = require('update-notifier')
 const execSync = require('child_process').execSync
-const logger = require('./logger')
-const config = require('../config')
+const logger = require('../../lib/logger')
+const config = require('../../config')
 
 function compiler(mode, source) {
   logger.info(`当前工作目录: ${process.cwd()}`)
@@ -17,20 +18,22 @@ function compiler(mode, source) {
   let currentSource = compilerSource
   let compileFuncitonPath = `./node_modules/${currentSource}/build/build.${mode}.js`
 
-  if (process.env.NODE_ENV === 'dev') {
-    currentSource = path.join(__dirname, '../../lilith-compiler')
-    compileFuncitonPath = `${currentSource}/build/build.${mode}.js`
-  }
-
   logger.info(path.join(config.context, 'node_modules', currentSource))
   // 判断对应的compiler是否已经安装，没有安装则安装
   if (
-    !fs.existsSync(path.join(config.context, 'node_modules', compilerSource))
+    !fs.existsSync(path.resolve(config.context, 'node_modules', compilerSource))
   ) {
     logger.info(`yarn add ${compilerSource} -D`)
     execSync(`yarn add ${compilerSource} -D`)
   }
   logger.info('load compileFunciton from', path.resolve(compileFuncitonPath))
+  const pkg = require(path.resolve(
+    `./node_modules/${currentSource}/package.json`
+  ))
+  // const notifier = updateNotifier({ pkg ,updateCheckInterval: 0})
+  const notifier = updateNotifier({ pkg })
+
+  notifier.notify()
 
   compileFunction = require(path.resolve(compileFuncitonPath))
 

@@ -4,13 +4,17 @@ const { blue } = require('chalk')
 const { createNewModule } = require('quickly-template/lib/createTemplate')
 const { getTemplate, findTemplate } = require('quickly-template/lib/template')
 const { ask } = require('quickly-template/lib/rl')
+const logger = require('../../lib/logger')
 
 async function createTemplate(argv) {
   const { name, context, root, target = '', filter, isDebug } = argv
   const [template] = getTemplate(argv)
 
   if (!template) {
-    console.log(findTemplate(argv))
+    const templates = findTemplate(argv)
+
+    logger.info('当前可用的模板有', templates)
+
     return
   }
   const globPattern = path.join(context, root, template, 'src', '**', '*.*')
@@ -28,6 +32,7 @@ async function createTemplate(argv) {
   } catch (error) {} // eslint-disable-line
   // debug('createNewModule',{ globPattern, target, renderOptions, name ,argv})
   createNewModule({ globPattern, target, renderOptions, name }, argv)
+  logger.info('create new', template, path.join(context, target, name), 'done!')
 }
 
 module.exports = createTemplate
