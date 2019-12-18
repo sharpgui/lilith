@@ -5,6 +5,7 @@ const { createNewModule } = require('quickly-template/lib/createTemplate')
 const merge = require('webpack-merge')
 const { join } = require('path')
 const fs = require('fs-extra')
+const getPort = require('../lib/getPort')
 const fileWatcher = require('../lib/fileWatcher')
 
 module.exports = function(webpackSettings) {
@@ -43,5 +44,5 @@ module.exports = function(webpackSettings) {
     // writeToDisk: true
   })
 
-  server.listen(8080)
+  server.listen(getPort(8080))
 }

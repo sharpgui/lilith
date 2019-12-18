@@ -3,6 +3,7 @@ const WebpackDevServer = require('webpack-dev-server')
 const webpackDevConfig = require('../webpack/webpack.dev.config.js')
 const merge = require('webpack-merge')
 const { join } = require('path')
+const getPort = require('../lib/getPort')
 
 module.exports = function(webpackSettings) {
   console.log(JSON.stringify(webpackSettings))
@@ -32,5 +33,5 @@ module.exports = function(webpackSettings) {
     // writeToDisk: true
   })
 
-  server.listen(8080)
+  server.listen(getPort(8080))
 }
