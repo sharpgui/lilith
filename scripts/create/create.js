@@ -66,7 +66,7 @@ const createLilithConfigFile = function(targetPath) {
 
 module.exports = async function(templateName, type, source) {
   const targetTemplatePath = join(process.cwd(), '_template', templateName)
-  const fromTemplatePath = join(__dirname, '..', '_template', 'template')
+  const fromTemplatePath = join(__dirname, '..', '..', '_template', 'template')
   const scaffoldTarget = join(process.cwd(), templateName)
 
   if (type === 'template') {
