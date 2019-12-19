@@ -1,5 +1,4 @@
-module.exports = () => {
-  return {
+module.exports = {
     presets: [
       [
         '@babel/preset-env',
@@ -36,4 +35,3 @@ module.exports = () => {
       '@babel/plugin-proposal-class-properties'
     ]
   }
-}

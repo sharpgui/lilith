@@ -1,19 +1,18 @@
 const autoprefixer = require('autoprefixer')
 const cssnano = require('cssnano')
-const babelConfig = require('../babel.config')
+const babelLilith = require('../babel.lilith')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const { join } = require('path')
 
 module.exports = {
-  entry: './src/',
+  entry: './src/index.js',
   output: {
     filename: 'js/[name].js'
   },
   resolve: {
     extensions: [
-      '.ts',
-      '.tsx',
       '.js',
       '.jsx',
       '.scss',
@@ -69,30 +68,13 @@ module.exports = {
           'cache-loader',
           {
             loader: 'babel-loader',
-            options: babelConfig()
+            options: babelLilith
           }
         ]
       },
       {
-        test: /\.tsx?$/,
-        use: [
-          'cache-loader',
-          {
-            loader: 'babel-loader',
-            options: babelConfig()
-          },
-          {
-            loader: 'ts-loader',
-            options: {
-              transpileOnly: true,
-              allowTsInNodeModules: true,
-              configFile: path.resolve(__dirname, '../tsconfig.json')
-            }
-          }
-          // {
-          //   loader: 'art-template-loader'
-          // }
-        ]
+        test: /\.vue$/,
+        loader: 'vue-loader'
       }
     ]
   },
@@ -100,7 +82,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: join(__dirname, '..', '/public/views/index.html'),
       favicon: join(__dirname, '..', '/public/icon/favicon.ico')
-    })
+    }),
+    new VueLoaderPlugin(),
   ],
   performance: {
     hints: false
