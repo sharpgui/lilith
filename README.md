@@ -9,6 +9,7 @@
 - `example/lilith-tempate` lilith 模板 demo
 - `example/overwrite-webpack-config` lilith 重写 webpack demo
 - `example/vue` lilith vue 编译 demo
+- `example/lilith-template-vue` lilith 模板 vue demo
 
 
 ## 命令说明
