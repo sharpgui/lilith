@@ -1,19 +1,12 @@
 const webpack = require('webpack')
 const WebpackDevServer = require('webpack-dev-server')
 const webpackDevConfig = require('../webpack/webpack.dev.config.js')
-const { createNewModule } = require('quickly-template/lib/createTemplate')
 const merge = require('webpack-merge')
 const { join } = require('path')
-const fileWatcher = require('../lib/fileWatcher')
+const getPort = require('../lib/getPort')
+require('../lib/template-hook')
 
 module.exports = function(webpackSettings) {
-  createNewModule({
-    globPattern: 'src/*.tsx',
-    target: '.lilith',
-    renderOptions: { name: 'Lilith Template' },
-    name: ''
-  })
-  fileWatcher()
   const compiler = webpack(
     merge(webpackDevConfig, { entry: './.lilith/index' }, webpackSettings)
   )
@@ -41,5 +34,5 @@ module.exports = function(webpackSettings) {
     // writeToDisk: true
   })
 
-  server.listen(8080)
+  server.listen(getPort(8080))
 }

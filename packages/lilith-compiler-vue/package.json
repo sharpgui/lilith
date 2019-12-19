@@ -1,6 +1,6 @@
 {
-  "name": "@qfed/lilith-compiler",
-  "version": "0.0.4",
+  "name": "@qfed/lilith-compiler-vue",
+  "version": "0.0.0",
   "description": "qfe 命令行工具",
   "main": "index.js",
   "scripts": {
@@ -46,7 +46,6 @@
     "autoprefixer": "^9.6.1",
     "babel-loader": "^8.0.6",
     "babel-plugin-import": "^1.13.0",
-    "cache-loader": "^4.1.0",
     "core-js": "^3.2.1",
     "css-loader": "^3.2.0",
     "cssnano": "^4.1.10",
@@ -59,9 +58,8 @@
     "quickly-template": "^1.2.2",
     "regenerator-runtime": "^0.13.3",
     "sass-loader": "^7.3.1",
+    "shelljs": "^0.8.3",
     "style-loader": "^1.0.0",
-    "typescript": "^3.5.3",
-    "vue": "^2.6.11",
     "vue-loader": "^15.7.2",
     "vue-template-compiler": "^2.6.11",
     "webpack": "^4.39.2",
@@ -71,6 +69,7 @@
     "webpack-merge": "^4.2.1"
   },
   "devDependencies": {
+    "vue": "^2.6.11",
     "eslint": "^6.7.2",
     "eslint-plugin-react": "^7.17.0",
     "husky": "^3.1.0",
