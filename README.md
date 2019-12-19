@@ -1,6 +1,7 @@
 # Lilith
 
-一个页面模板构建工具，并且模板可以独立运行。
+- 一个页面模板构建工具，并且模板可以独立运行（类似 umi block）；
+- 一个零配置webpack编译工具（类似 create-react-app）；
 
 ## 命令说明
 
@@ -31,9 +32,9 @@ Examples:
 
 # TODO
 
-- [ ] new 命令合理提示
+- [x] new 命令合理提示
 - [ ] README
-- [ ] 端口号自动增长
+- [x] 端口号自动增长
 - [ ] 指定config 文件位置
-- [ ] lilith log 优化只有error 时输出log，并且只有真正发生error 时创建log文件
+- [x] lilith log 优化只有error 时输出log，并且只有真正发生error 时创建log文件
 - [ ] lilith cli 和Lilith compiler 版本同步问题，计划用lerna 统一管理，同步发版
