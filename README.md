@@ -10,7 +10,7 @@ Usage: lilith [options] [command]
 Options:
   -v, --version                   version
   --root <string>                 模板所在根目录,相对目录,基于context来获取root的绝对路径，默认值"_template" (default: "_template")
-  --context <string>              lilith.config.js文件所在目录 > 优先级package.json所在目录 > process.cwd() (default: "/Users/lizhuo/liz/lilith")
+  --context <string>              lilith.config.js文件所在目录 > 优先级package.json所在目录 > process.cwd() (default: process.cwd())
   --target <string>               新生成模块的输出路径，相对process.cwd(),默认"." (default: ".")
   --template <string>             当前使用的模板，模板可选范围即root下面指定的模板，支持简写即当前有模板page那么p,pa,pag等效
   --name <string>                 新生成模块的名称

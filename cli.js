@@ -19,7 +19,7 @@ program
   )
   .option(
     '--context <string>',
-    'lilith.config.js文件所在目录 > 优先级package.json所在目录 > process.cwd()',
+    '优先级lilith.config.js文件所在目录 > package.json所在目录 > process.cwd()',
     config.context
   )
   .option(
@@ -29,7 +29,7 @@ program
   )
   .option(
     '--template <string>',
-    '当前使用的模板，模板可选范围即root下面指定的模板，支持简写即当前有模板page那么p,pa,pag等效'
+    '当前使用的模板，模板可选范围即root下面指定的模板，支持简写如模板page那么p,pa,pag等效'
   )
   .option('--name <string>', '新生成模块的名称')
   // run
