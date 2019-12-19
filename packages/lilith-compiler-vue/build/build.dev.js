@@ -6,7 +6,6 @@ const { join } = require('path')
 const getPort = require('../lib/getPort')
 
 module.exports = function(webpackSettings) {
-
   const compiler = webpack(merge(webpackDevConfig, webpackSettings))
 
   const server = new WebpackDevServer(compiler, {
