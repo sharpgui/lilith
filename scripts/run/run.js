@@ -9,6 +9,7 @@ function compiler(mode, source) {
   logger.info(`当前工作目录: ${process.cwd()}`)
   let compilerSource = source
   try {
+    logger.info('source', source)
     compilerSource = config.compiler[source] || source
   } catch (error) {} // eslint-disable-line
 

@@ -1,3 +1,3 @@
-# Lilith 模板独立运行DEMO
+# Lilith 重写 webpack 配置
 
 `$ npm run dev`

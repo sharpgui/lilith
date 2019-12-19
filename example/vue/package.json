@@ -1,0 +1,24 @@
+{
+  "name": "@qfed/lilith-template",
+  "version": "0.0.1",
+  "description": "qfe 命令行工具",
+  "main": "index.js",
+  "scripts": {
+    "dev": "lilith run dev vue",
+    "mock": "jsr -r mock -p 3001 -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cli",
+    "webpack",
+    "babel",
+    "compiler"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "@qfed/lilith-compiler-vue": "^0.0.0",
+    "vue": "^2.6.11"
+  }
+}

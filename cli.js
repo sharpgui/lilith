@@ -60,10 +60,10 @@ program
 program
   .command('run <mode> [source]')
   .description('lilith 编译命令')
-  .action(mode => {
-    const { source } = program.opts()
+  .action((mode, source) => {
+    let currentSource = source || program.opts().source
     let currentMode = mode === 'build' ? 'prod' : mode
-    runCompiler(currentMode, source)
+    runCompiler(currentMode, currentSource)
   })
 
 program
