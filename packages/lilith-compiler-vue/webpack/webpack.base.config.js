@@ -7,7 +7,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const { join } = require('path')
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src',
   output: {
     filename: 'js/[name].js'
   },
@@ -26,7 +26,6 @@ module.exports = {
       {
         test: /\.(scss|sass|css)$/,
         use: [
-          // 'cache-loader',
           'style-loader',
           'css-loader',
           {
@@ -46,7 +45,6 @@ module.exports = {
       {
         test: /\.(less)$/,
         use: [
-          // 'cache-loader',
           'style-loader',
           'css-loader',
           {
@@ -58,17 +56,6 @@ module.exports = {
           {
             loader: 'less-loader',
             options: { javascriptEnabled: true }
-          }
-        ]
-      },
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: [
-          'cache-loader',
-          {
-            loader: 'babel-loader',
-            options: babelLilith
           }
         ]
       },

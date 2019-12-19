@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-// import './index.scss'
 new Vue({
-  el: '#app',
+  el: '#root',
   render: h => h(App)
 })
