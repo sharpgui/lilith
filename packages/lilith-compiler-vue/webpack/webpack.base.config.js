@@ -12,14 +12,7 @@ module.exports = {
     filename: 'js/[name].js'
   },
   resolve: {
-    extensions: [
-      '.js',
-      '.jsx',
-      '.scss',
-      '.sass',
-      '.less',
-      '.css'
-    ]
+    extensions: ['.js', '.jsx', '.scss', '.sass', '.less', '.css']
   },
   module: {
     rules: [
@@ -70,7 +63,7 @@ module.exports = {
       template: join(__dirname, '..', '/public/views/index.html'),
       favicon: join(__dirname, '..', '/public/icon/favicon.ico')
     }),
-    new VueLoaderPlugin(),
+    new VueLoaderPlugin()
   ],
   performance: {
     hints: false
