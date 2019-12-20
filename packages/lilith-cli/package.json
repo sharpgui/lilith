@@ -1,0 +1,60 @@
+{
+  "name": "@qfed/lilith",
+  "version": "0.0.14",
+  "description": "qfe 命令行工具",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "lilith": "cli.js"
+  },
+  "keywords": [
+    "cli",
+    "webpack",
+    "babel",
+    "compiler"
+  ],
+  "author": "",
+  "license": "ISC",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier-eslint --write",
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "semi": false,
+    "singleQuote": true
+  },
+  "dependencies": {
+    "art-template": "^4.13.2",
+    "art-template-loader": "^1.4.3",
+    "chalk": "^2.4.2",
+    "chokidar": "^3.3.0",
+    "commander": "^3.0.0",
+    "core-js": "^3.2.1",
+    "download-git-repo": "^3.0.2",
+    "findup-sync": "^4.0.0",
+    "fs-extra": "^8.1.0",
+    "inquirer": "^7.0.0",
+    "log4js": "^6.1.0",
+    "quickly-template": "^1.2.2",
+    "update-notifier": "^4.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.7.2",
+    "eslint-plugin-react": "^7.17.0",
+    "husky": "^3.1.0",
+    "lerna": "^3.19.0",
+    "lint-staged": "^9.5.0",
+    "prettier-eslint-cli": "^5.0.0"
+  }
+}

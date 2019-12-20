@@ -1,9 +1,1 @@
-**/node_modules/**
-**/dist/**
-webpack.config.js
-test.js
-**/_temp/**
-#_template
-**/.lilith/**
-lilith.log
-/template/public
+node_modules
