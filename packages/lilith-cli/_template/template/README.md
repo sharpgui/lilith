@@ -6,7 +6,7 @@
   * 注入略加封装的Request工具
   * Mock服务
   * 配合 lilith new 命令智能生成模版页面
-***
+
 ## 运行方式
 ```bash
 # 全局安装lilith命令行工具
@@ -21,7 +21,7 @@ $ cd _template/<template name>
 # 运行启动
 $ npm install && npm run dev
 ```
-***
+
 ## 目录结构
 **创建命令会自动把模版开发文件放到_template目录下**
 ```javascript
@@ -36,7 +36,7 @@ $ npm install && npm run dev
 |     |     |———— README.md
 |     |     |———— yarn.lock
 ```
-***
+
 ## 模版语法
 **模版使用 [art_template](https://github.com/aui/art-template) 编译**
 
@@ -58,13 +58,9 @@ class page {
 }
 ```
 
-***
-
 ## Mock服务
 
 **Mock服务使用 [json-server-router](https://github.com/advence-liz/json-server-router)**
-
-***
 
 ## TIPS
 
