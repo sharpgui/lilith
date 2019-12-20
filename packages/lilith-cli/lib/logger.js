@@ -1,7 +1,7 @@
 const log4js = require('log4js')
 const path = require('path')
 const fs = require('fs-extra')
-const { blue, red, green } = require('chalk')
+const { blue, red, green } = require('../lib/color')
 const isDebug = process.env.NODE_ENV === 'dev'
 log4js.configure({
   appenders: {

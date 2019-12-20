@@ -39,12 +39,3 @@ Examples:
   $ lilith run dev
   $ lilith new template someTemplate
 ```  
-
-# TODO
-
-- [x] new 命令合理提示
-- [ ] README
-- [x] 端口号自动增长
-- [ ] 指定config 文件位置
-- [x] lilith log 优化只有error 时输出log，并且只有真正发生error 时创建log文件
-- [ ] lilith cli 和Lilith compiler 版本同步问题，计划用lerna 统一管理，同步发版

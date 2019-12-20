@@ -1,6 +1,6 @@
 const path = require('path')
 const fs = require('fs')
-const { blue } = require('chalk')
+const { blue } = require('../../lib/color')
 const { createNewModule } = require('quickly-template/lib/createTemplate')
 const { getTemplate, findTemplate } = require('quickly-template/lib/template')
 const { ask } = require('quickly-template/lib/rl')

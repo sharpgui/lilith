@@ -1,8 +1,4 @@
 {
-  "name": "@qfed/lilith-template",
-  "version": "0.0.1",
-  "description": "qfe 命令行工具",
-  "main": "index.js",
   "scripts": {
     "dev": "lilith run template",
     "mock": "jsr -r mock -p 3001 -w",
@@ -23,6 +19,6 @@
     "react-dom": "^16.12.0"
   },
   "devDependencies": {
-    "@qfed/lilith-compiler": "^0.0.9"
+    "@qfed/lilith-compiler": "^0.0.11"
   }
 }
