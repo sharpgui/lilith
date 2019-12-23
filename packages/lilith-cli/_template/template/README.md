@@ -22,6 +22,8 @@ $ cd _template/<template name>
 $ npm install && npm run dev
 ```
 
+访问 [https://localhost:8080](https://localhost:8080) 开始模版开发！
+
 ## 目录结构
 **创建命令会自动把模版开发文件放到_template目录下**
 ```javascript
@@ -49,7 +51,7 @@ class page {
 }
 ```
 
-### 编译后
+#### 编译后
 ```javascript
 class page {
   'hi, newPage'
