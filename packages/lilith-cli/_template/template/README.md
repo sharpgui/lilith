@@ -1,4 +1,4 @@
-# 模版开发注意事项
+# 模版开发说明
 
 ## 简介
 **本模版是基于 [lilith](https://github.com/qfed/lilith) 命令行工具，配套生成开发模版页面的模版，包含以下功能**
@@ -22,7 +22,7 @@ $ cd _template/<template name>
 $ npm install && npm run dev
 ```
 
-访问 [https://localhost:8080](https://localhost:8080) 开始模版开发！
+访问 `https://localhost:${port}`开始模版开发！
 
 ## 目录结构
 **创建命令会自动把模版开发文件放到_template目录下**
@@ -64,9 +64,8 @@ class page {
 
 **Mock服务使用 [json-server-router](https://github.com/advence-liz/json-server-router)**
 
-## TIPS
+## 自定义配置
 
-* Request 会在模版创建时，由 lilith-compiler 携带到模版仓储中
 * 如果需要定制化模版编译的内容及源，请配合 lilith 编译工具，配置 lilith.config.js 文件
 
 ```javascript
@@ -81,3 +80,6 @@ module.exports = {
   }
 }
 ```
+## 内置工具
+
+* Request 会在模版创建时，由 lilith-compiler 携带到模版仓储中

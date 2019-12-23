@@ -69,7 +69,8 @@ program
 
 program
   .command('create [templateName]')
-  .action((templateName = 'lilith-project', options) => {
+  .description('lilith 创建命令，根据提示可以创建项目脚手架或者lilith模板')
+  .action((templateName = 'lilith-project') => {
     const { type, scaffoldSource: source } = program.opts()
     create(templateName, type, source)
   })
