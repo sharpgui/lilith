@@ -58,6 +58,12 @@ example:
 
 `$ lilith new <template> <name> [target]`
 
+- `<template>` 要创建的页面，支持简写只要满足startsWith就会认为匹配
+- `<name>` 页面名称
+- `[target]` 页面输出目录，默认`process.cwd()`
+
+example:
+
 - `$ lilith new page new-page` 以page为模板创建一下新模块new-page并输出到当前目录；
 - `$ lilith new pa new-page` 同样是以page为模板创建一下新模块new-page并输出到当前目录，因为template支持简写形式，简写只要满足startsWith就会认为其相等的；
 - `$ lilith new page new-page pages` 以page为模板创建一下新模块new-page并输出到pages目录；
