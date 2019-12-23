@@ -20,6 +20,7 @@
   "dependencies": {
     "@babel/core": "^7.7.7",
     "@babel/preset-typescript": "^7.7.7",
+    "@qfed/lilith-compiler": "^0.1.1",
     "commander": "^3.0.0",
     "download-git-repo": "^3.0.2",
     "findup-sync": "^4.0.0",
