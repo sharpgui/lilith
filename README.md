@@ -113,10 +113,10 @@ module.exports = {
 
 ## exmaple
 
-- `example/lilith-tempate` lilith 模板 demo；
-- `example/overwrite-webpack-config` lilith 重写 webpack demo；
-- `example/vue` lilith vue 编译 demo；
-- `example/lilith-template-vue` lilith 模板 vue demo；
+- [example/lilith-tempate](./packages/lilith-cli/example/lilith-template/) lilith 模板 demo；
+- [example/overwrite-webpack-config](./packages/lilith-cli/example/overwrite-webpack-config/) lilith 重写 webpack demo；
+- [example/vue](./packages/lilith-cli/example/vue/) lilith vue 编译 demo；
+- [example/lilith-template-vue](./packages/lilith-cli/example/lilith-template-vue/) lilith 模板 vue demo；
 
 
 ## CLI usage
