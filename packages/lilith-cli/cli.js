@@ -40,6 +40,7 @@ program
     '@qfed/lilith-compiler'
   )
   .option('--type <string>', '创建的模版类型')
+  .option('--scaffoldSource <string>', '脚手架下载源')
 //create
 program
   .command('new <template> <name> [target]')
@@ -67,9 +68,9 @@ program
   })
 
 program
-  .command('create [<templateName>]')
+  .command('create [templateName]')
   .action((templateName = 'lilith-project', options) => {
-    const { type, source } = options
+    const { type, scaffoldSource: source } = program.opts()
     create(templateName, type, source)
   })
 
