@@ -31,15 +31,24 @@ $ npm install @qfed/lilith -g
 
 lilith 创建命令，根据命令提示创建项目脚手架或者`lilith template`
 
+`$ lilith create <name>`
+
 
 ### Run 
 
 编译命令零配置运行现有项目
 
-`$ run <mode> [source]`   
+`$ run <mode> [source]` 
 
 - `<mode>` 编译模式现在支持三种模式 `dev`（webpack dev server模板）； `build`（webpack production 模式） `template`（lilith template 模式，配合 new 命令使用）；
 - `[source]` 编译源默为`@qfed/lilith-compiler` 支持 `react` 与 `typescript` ，现提供两种编译源 `react` 与 `vue` `npm run dev` 即编译 `react` 项目， `npm run dev vue` 即编译 `vue` 项目，`[source]` 也可以是符合 Lilith 编译规范自定义源；
+
+example:
+
+- `$ lilith run dev`
+- `$ lilith run dev vue`
+- `$ lilith run build`
+- `$ lilith run template`
 
 
 
