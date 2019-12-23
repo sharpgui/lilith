@@ -1,6 +1,6 @@
 {
   "name": "@qfed/lilith",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "qfe 命令行工具",
   "main": "index.js",
   "scripts": {
