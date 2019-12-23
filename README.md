@@ -25,6 +25,19 @@ install lilith
 $ npm install @qfed/lilith -g
 ```
 
+假设项目目录结构如下,`$ lilith run dev` 将自动以`./src/index`作为入口启动 `webpack devserver`;
+
+```bash
+├── README.md
+├── lilith.config.js
+├── mock
+│   └── api.json
+├── package.json
+├── src
+│   └── index.tsx
+└── yarn.lock
+```
+
 ## 命令介绍
 
 ### Create
@@ -36,7 +49,7 @@ lilith 创建命令，根据命令提示创建项目脚手架或者`lilith templ
 
 ### Run 
 
-编译命令零配置运行现有项目
+编译命令零配置运行现有项目，默认打包入口为`./src/index`
 
 `$ run <mode> [source]` 
 
@@ -73,7 +86,7 @@ example:
 Lilith 不仅是零配置 webpack 运行工具，同时也是模板生成工具，并且生成的模板可以独立运行，lilith template 中包含以下功能；
   - 编译运行模版语法
   - 注入略加封装的Request工具
-  - Mock服务
+  - Mock服务[了解更多-json-server-router](https://github.com/advence-liz/json-server-router)
   - 配合 lilith new 命令智能生成模版页面
 
 ```bash
@@ -101,7 +114,7 @@ lilith 可以通过配置 lilith.config.js 文件，定制化模版编译的内�
 module.exports = {
   // 自定义webpack配置
   webpack: {
-
+    entry: './src/'
   },
   // 自定义编译源
   compiler: {
