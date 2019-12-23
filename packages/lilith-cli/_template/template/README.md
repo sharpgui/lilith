@@ -40,21 +40,26 @@ $ npm install && npm run dev
 ```
 
 ## 模版语法
-**模版使用 [art_template](https://github.com/aui/art-template) 编译**
+
+模版使用 [art_template](https://github.com/aui/art-template) 编译，并且扩充了`__name_pascal__`形式以规避 IDE 解析语法报错。
 
 #### 编译前
+
 ```javascript
-class page {
+class  __name_pascal__{
   'hi, {{name}}'
   'hi, {{name|pascal}}'
+  'hi, __name_pascal__'
   'hi, {{dirname|pascal}}'
+  
 }
 ```
 
 #### 编译后
 ```javascript
-class page {
+class NewPage {
   'hi, newPage'
+  'hi, NewPage'
   'hi, NewPage'
   'hi, NewPage'
 }
