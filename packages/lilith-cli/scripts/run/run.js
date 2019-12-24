@@ -1,7 +1,7 @@
 const path = require('path')
 const fs = require('fs-extra')
 const updateNotifier = require('update-notifier')
-const execSync = require('child_process').execSync
+const shell = require('shelljs')
 const logger = require('../../lib/logger')
 const config = require('../../config')
 
@@ -25,10 +25,10 @@ function compiler(mode, source) {
       `./node_modules/${currentSource}/package.json`
     ))
     const notifier = updateNotifier({ pkg })
-    notifier.update && execSync(`yarn add ${compilerSource} -D`)
+    notifier.update && shell.exec(`yarn add ${compilerSource} -D`)
   } catch (error) {
     logger.info(`yarn add ${compilerSource} -D`)
-    execSync(`yarn add ${compilerSource} -D`)
+    shell.exec(`yarn  add ${compilerSource} -D`)
   }
   logger.info('load compileFunciton from', path.resolve(compileFuncitonPath))
   compileFunction = require(path.resolve(compileFuncitonPath))
