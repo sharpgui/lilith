@@ -1,5 +1,6 @@
 module.exports = () => {
   return {
+    cwd: __dirname,
     presets: [
       [
         '@babel/preset-env',

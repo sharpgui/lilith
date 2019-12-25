@@ -25,6 +25,7 @@
     "download-git-repo": "^3.0.2",
     "findup-sync": "^4.0.0",
     "fs-extra": "^8.1.0",
+    "global-modules": "^2.0.0",
     "inquirer": "^7.0.0",
     "klaw-sync": "^6.0.0",
     "log4js": "^6.1.0",

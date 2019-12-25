@@ -8,6 +8,7 @@ const pkg = require('./package.json')
 const newTemplate = require('./scripts/new/new')
 const create = require('./scripts/create/create')
 const runCompiler = require('./scripts/run/run')
+const compile = require('./scripts/compile/compile')
 updateNotifier({ pkg }).notify()
 program
   .version(pkg.version, '-v, --version', 'version')
@@ -41,6 +42,7 @@ program
   )
   .option('--type <string>', '创建的模版类型')
   .option('--scaffoldSource <string>', '脚手架下载源')
+  .option('--dir <string>', '编译模版的目录')
 //create
 program
   .command('new <template> <name> [target]')
@@ -67,12 +69,27 @@ program
     runCompiler(currentMode, currentSource)
   })
 
+/**
+ * 创建 模版/脚手架 的相关命令
+ * @templateName 模版/脚手架名称
+ */
 program
   .command('create [templateName]')
   .description('lilith 创建命令，根据提示可以创建项目脚手架或者lilith模板')
   .action((templateName = 'lilith-project') => {
     const { type, scaffoldSource: source } = program.opts()
     create(templateName, type, source)
+  })
+
+/**
+ * 编译单文件的相关命令
+ * @dir 文件所在目录，如果未传文件名，则自动编译该目录下的index文件
+ */
+program
+  .command('compile [dir]')
+  .description('lilith 编译命令，可以利用lilith-compiler进行单文件的编译运行')
+  .action((dir = '.') => {
+    compile(dir)
   })
 
 program.on('--help', function() {
