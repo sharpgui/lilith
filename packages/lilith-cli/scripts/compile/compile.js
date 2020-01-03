@@ -1,10 +1,11 @@
 const { exec } = require('shelljs')
 const globalModules = require('global-modules')
 const fs = require('fs-extra')
-const { join, dirname, parse } = require('path')
+const { join, parse } = require('path')
 const walkSync = require('klaw-sync')
 const logger = require('../../lib/logger')
 const findupSync = require('findup-sync')
+const compareVersion = require('../../lib/compareVersion')
 
 const getFilename = function(path) {
   const pathArr = path.split('/')
@@ -20,8 +21,8 @@ const getFilename = function(path) {
   }
 }
 
-const globalReactCompiler = join(__dirname, '../../../lilith-compiler')
-const globalVueCompiler = join(__dirname, '../../../lilith-compiler-vue')
+// const globalReactCompiler = join(__dirname, '../../../lilith-compiler')
+// const globalVueCompiler = join(__dirname, '../../../lilith-compiler-vue')
 const globalReactCompilerPath = join(globalModules, '@qfed/lilith-compiler')
 const globalVueCompilerPath = join(globalModules, '@qfed/lilith-compiler-vue')
 const reactCompilerName = '@qfed/lilith-compiler'
@@ -35,9 +36,11 @@ const checkFileTypeAndCompile = function(absolutePath, ext) {
   // 如果是js或者React文件，则使用 @qfed/lilith-compiler 进行编译
   let compilerPath = ''
   let compiler = ''
+  let compilerType = ''
   if (/tsx?$/.test(ext) || /jsx?$/.test(ext)) {
     compilerPath = globalReactCompilerPath
     compiler = reactCompilerName
+    compilerType = 'react'
   }
 
   // FIXME VUE的启动文件不是vue结尾
@@ -45,26 +48,35 @@ const checkFileTypeAndCompile = function(absolutePath, ext) {
   if (/vue$/.test(ext)) {
     compilerPath = globalVueCompilerPath
     compiler = vueCompilerName
+    compilerType = 'vue'
   }
 
   if (!compiler || !compilerPath) {
     return logger.error('请检查该目录下是否包含Vue或者React文件')
   }
 
+  // 对比cli和compiler的版本
+  compareVersion(compilerType)
+
   if (!fs.existsSync(compilerPath)) {
     exec(`npm i -g ${compiler}`)
   }
   const compileFunction = require(join(compilerPath, 'build/build.dev.js'))
+
+  const modules = [join(globalModules, compiler, 'node_modules')]
+
+  try {
+    modules.push(join(parse(findupSync('package.json')).dir, 'node_modules'))
+  } catch (err) {
+    logger.info(err)
+  }
 
   // logger.info('当前依赖调用目录', parse(findupSync('package.json')).dir)
   compileFunction({
     context: join(globalModules, compiler),
     entry: absolutePath,
     resolve: {
-      modules: [
-        join(globalModules, compiler, 'node_modules'),
-        join(parse(findupSync('package.json')).dir, 'node_modules')
-      ]
+      modules
     }
   })
 }
