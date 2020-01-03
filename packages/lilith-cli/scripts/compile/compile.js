@@ -1,9 +1,10 @@
 const { exec } = require('shelljs')
 const globalModules = require('global-modules')
 const fs = require('fs-extra')
-const { join } = require('path')
+const { join, dirname, parse } = require('path')
 const walkSync = require('klaw-sync')
 const logger = require('../../lib/logger')
+const findupSync = require('findup-sync')
 
 const getFilename = function(path) {
   const pathArr = path.split('/')
@@ -39,6 +40,7 @@ const checkFileTypeAndCompile = function(absolutePath, ext) {
     compiler = reactCompilerName
   }
 
+  // FIXME VUE的启动文件不是vue结尾
   // 如果是vue文件，则使用 @qfed/lilith-compiler-vue 进行编译
   if (/vue$/.test(ext)) {
     compilerPath = globalVueCompilerPath
@@ -53,11 +55,16 @@ const checkFileTypeAndCompile = function(absolutePath, ext) {
     exec(`npm i -g ${compiler}`)
   }
   const compileFunction = require(join(compilerPath, 'build/build.dev.js'))
+
+  // logger.info('当前依赖调用目录', parse(findupSync('package.json')).dir)
   compileFunction({
     context: join(globalModules, compiler),
     entry: absolutePath,
     resolve: {
-      modules: [join(globalModules, compiler, 'node_modules')]
+      modules: [
+        join(globalModules, compiler, 'node_modules'),
+        join(parse(findupSync('package.json')).dir, 'node_modules')
+      ]
     }
   })
 }
