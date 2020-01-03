@@ -16,9 +16,13 @@ module.exports = function(compilerType = 'react') {
       join(globalLilithPath, './package.json')
     )
     const lilithVersion = lilithPackage.version
-    const compilerPackage = fs.readJSONSync(compilerPath)
+    const compilerPackage = fs.readJSONSync(
+      join(compilerPath, './package.json')
+    )
     const compilerVersion = compilerPackage.version
     if (lilithVersion !== compilerVersion) {
+      logger.info('检测到cli版本和编译源不一致，更新编译源')
+      logger.info(`npm i -g ${compiler}@${lilithVersion}`)
       exec(`npm i -g ${compiler}@${lilithVersion}`)
     }
   } catch (err) {
