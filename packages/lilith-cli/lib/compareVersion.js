@@ -3,9 +3,9 @@ const fs = require('fs-extra')
 const { join } = require('path')
 const { exec } = require('shelljs')
 const logger = require('./logger')
-const globalReactCompiler = '@qfed/lilith-compiler'
-const globalVueCompiler = '@qfed/lilith-compiler-vue'
-const globalLilithPath = join(globalModules, '@qfed/lilith')
+const globalReactCompiler = 'lilith-compiler'
+const globalVueCompiler = 'lilith-compiler-vue'
+const globalLilithPath = join(globalModules, 'lilith-cli')
 
 module.exports = function(compilerType = 'react') {
   const compiler =

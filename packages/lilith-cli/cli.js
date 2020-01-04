@@ -37,8 +37,8 @@ program
   .option('--mode <string>', '编译模式 template dev build', 'dev')
   .option(
     '--source <string>',
-    '编译源默认值 @qfed/lilith-compiler',
-    '@qfed/lilith-compiler'
+    '编译源默认值 lilith-compiler',
+    'lilith-compiler'
   )
   .option('--type <string>', '创建的模版类型')
   .option('--scaffoldSource <string>', '脚手架下载源')

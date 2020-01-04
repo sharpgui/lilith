@@ -22,7 +22,7 @@
 install lilith
 
 ```bash
-$ npm install @qfed/lilith -g
+$ npm install lilith-cli -g
 ```
 
 假设项目目录结构如下,`$ lilith run dev` 将自动以`./src/index`作为入口启动 `webpack devserver`;
@@ -118,8 +118,8 @@ module.exports = {
   },
   // 自定义编译源
   compiler: {
-    react: '@qfed/lilith-compiler'
-    vue:'@qfed/lilith-compiler-vue'
+    react: 'lilith-compiler'
+    vue:'lilith-compiler-vue'
   }
 }
 ```
@@ -145,7 +145,7 @@ Options:
   --template <string>             当前使用的模板，模板可选范围即root下面指定的模板，支持简写即当前有模板page那么p,pa,pag等效
   --name <string>                 新生成模块的名称
   --mode <string>                 编译模式 template dev build (default: "dev")
-  --source <string>               编译源默认值 @qfed/lilith-compiler (default: "@qfed/lilith-compiler")
+  --source <string>               编译源默认值 lilith-compiler (default: "lilith-compiler")
   --type <string>                 创建的模版类型
   -h, --help                      output usage information
 

@@ -23,10 +23,10 @@ const getFilename = function(path) {
 
 // const globalReactCompiler = join(__dirname, '../../../lilith-compiler')
 // const globalVueCompiler = join(__dirname, '../../../lilith-compiler-vue')
-const globalReactCompilerPath = join(globalModules, '@qfed/lilith-compiler')
-const globalVueCompilerPath = join(globalModules, '@qfed/lilith-compiler-vue')
-const reactCompilerName = '@qfed/lilith-compiler'
-const vueCompilerName = '@qfed/lilith-compiler'
+const globalReactCompilerPath = join(globalModules, 'lilith-compiler')
+const globalVueCompilerPath = join(globalModules, 'lilith-compiler-vue')
+const reactCompilerName = 'lilith-compiler'
+const vueCompilerName = 'lilith-compiler'
 
 /**
  * 根据文件类型安装对应的编译源，并执行编译
@@ -59,6 +59,7 @@ const checkFileTypeAndCompile = function(absolutePath, ext) {
   compareVersion(compilerType)
 
   if (!fs.existsSync(compilerPath)) {
+    logger.info(`npm i -g ${compiler}`)
     exec(`npm i -g ${compiler}`)
   }
   const compileFunction = require(join(compilerPath, 'build/build.dev.js'))
