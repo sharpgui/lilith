@@ -27,6 +27,6 @@ module.exports = function(compilerType = 'react') {
       exec(`npm i -g ${compiler}@${lilithVersion}`)
     }
   } catch (err) {
-    logger.error(err)
+    // logger.error(err)
   }
 }
