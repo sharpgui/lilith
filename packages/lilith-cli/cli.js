@@ -35,11 +35,7 @@ program
   .option('--name <string>', '新生成模块的名称')
   // run
   .option('--mode <string>', '编译模式 template dev build', 'dev')
-  .option(
-    '--source <string>',
-    '编译源默认值 lilith-compiler',
-    config.REACT_COMPILER
-  )
+  .option('--source <string>', '编译源默认值 lilith-compiler', config.react)
   .option('--type <string>', '创建的模版类型')
   .option('--scaffoldSource <string>', '脚手架下载源')
   .option('--dir <string>', '编译模版的目录')

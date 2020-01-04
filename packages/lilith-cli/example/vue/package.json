@@ -15,6 +15,7 @@
   "dependencies": {},
   "devDependencies": {
     "@qfed/lilith-compiler-vue": "^0.0.0",
+    "lilith-compiler-vue": "^1.0.0",
     "vue": "^2.6.11"
   }
 }

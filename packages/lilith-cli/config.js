@@ -32,5 +32,7 @@ module.exports = {
   root,
   REACT_COMPILER,
   VUE_COMPILER,
+  react: REACT_COMPILER,
+  vue: VUE_COMPILER,
   ...config
 }
