@@ -7,6 +7,8 @@ const logger = require('../../lib/logger')
 const findupSync = require('findup-sync')
 const compareVersion = require('../../lib/compareVersion')
 
+const { REACT_COMPILER, VUE_COMPILER } = require('../../config')
+
 const getFilename = function(path) {
   const pathArr = path.split('/')
   const len = pathArr.length
@@ -22,18 +24,18 @@ const getFilename = function(path) {
 }
 
 // const globalReactCompiler = join(__dirname, '../../../lilith-compiler')
-// const globalVueCompiler = join(__dirname, '../../../lilith-compiler-vue')
-const globalReactCompilerPath = join(globalModules, 'lilith-compiler')
-const globalVueCompilerPath = join(globalModules, 'lilith-compiler-vue')
-const reactCompilerName = 'lilith-compiler'
-const vueCompilerName = 'lilith-compiler'
+// const globalVueCompiler = join(__dirname, '../../../VUE_COMPILER')
+const globalReactCompilerPath = join(globalModules, REACT_COMPILER)
+const globalVueCompilerPath = join(globalModules, VUE_COMPILER)
+const reactCompilerName = REACT_COMPILER
+const vueCompilerName = VUE_COMPILER
 
 /**
  * 根据文件类型安装对应的编译源，并执行编译
  * @param {string} absolutePath 入口文件的绝对路径
  */
 const checkFileTypeAndCompile = function(absolutePath, ext) {
-  // 如果是js或者React文件，则使用 @qfed/lilith-compiler 进行编译
+  // 如果是js或者React文件，则使用 lilith-compiler 进行编译
   let compilerPath = ''
   let compiler = ''
   let compilerType = ''
@@ -44,7 +46,7 @@ const checkFileTypeAndCompile = function(absolutePath, ext) {
   }
 
   // FIXME VUE的启动文件不是vue结尾
-  // 如果是vue文件，则使用 @qfed/lilith-compiler-vue 进行编译
+  // 如果是vue文件，则使用 VUE_COMPILER 进行编译
   if (/vue$/.test(ext)) {
     compilerPath = globalVueCompilerPath
     compiler = vueCompilerName

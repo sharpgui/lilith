@@ -6,6 +6,9 @@ let context = process.cwd()
 let root = '_template'
 let config = {}
 
+const REACT_COMPILER = 'lilith-compiler'
+const VUE_COMPILER = 'lilith-compiler-vue'
+
 // context 优先级 lilith.config.js > package.json > cwd
 try {
   context = path.dirname(findup('package.json'))
@@ -27,5 +30,7 @@ module.exports = {
   ...{ rename: false, filter: {} },
   context,
   root,
+  REACT_COMPILER,
+  VUE_COMPILER,
   ...config
 }

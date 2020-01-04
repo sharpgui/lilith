@@ -38,7 +38,7 @@ program
   .option(
     '--source <string>',
     '编译源默认值 lilith-compiler',
-    'lilith-compiler'
+    config.REACT_COMPILER
   )
   .option('--type <string>', '创建的模版类型')
   .option('--scaffoldSource <string>', '脚手架下载源')
