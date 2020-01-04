@@ -1,6 +1,6 @@
 {
   "name": "lilith-compiler-vue",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "qfe 命令行工具",
   "main": "index.js",
   "scripts": {
