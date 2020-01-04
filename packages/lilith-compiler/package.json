@@ -1,6 +1,6 @@
 {
-  "name": "@qfed/lilith-compiler",
-  "version": "0.2.1",
+  "name": "lilith-compiler",
+  "version": "0.0.0",
   "description": "qfe 命令行工具",
   "main": "index.js",
   "scripts": {
