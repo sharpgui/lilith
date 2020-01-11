@@ -1,23 +1,27 @@
-# Lilith
+#<center>Lilith</center>
+<center>一个集模板构建、模板独立运行及零配置webpack编译的工具</center>
 
-- 一个页面模板构建工具，并且模板可以独立运行（类似 umi block）；
-- 一个零配置webpack编译工具（类似 create-react-app）,提供 react 和 vue 的两种编译方式，默认为 react 编译模式；；
 
-## Table of contents
+##提供的功能
+- 模板构建
+- 独立运行模板
+- 零配置webpack编译，支持React与Vue两种编译方式（默认Reac编译模式）
+- 支持TypeScript
 
-- [Lilith](#lilith)
-  - [Table of contents](#table-of-contents)
-  - [Getting started](#getting-started)
-  - [命令介绍](#%e5%91%bd%e4%bb%a4%e4%bb%8b%e7%bb%8d)
-    - [Create](#create)
-    - [Run](#run)
-    - [New](#new)
-  - [关于 template 模式](#%e5%85%b3%e4%ba%8e-template-%e6%a8%a1%e5%bc%8f)
-  - [自定义配置](#%e8%87%aa%e5%ae%9a%e4%b9%89%e9%85%8d%e7%bd%ae)
-  - [exmaple](#exmaple)
+
+## 目录
+
+  - [安装](#安装)
+  - [命令](#用法)
+    - [create](#create)
+    - [run](#run)
+    - [template](#template)
+  - [关于模板](#关于模板)
+  - [自定义配置](#自定义配置)
+  - [示例](#示例)
   - [CLI usage](#cli-usage)
   
-## Getting started
+## 安装
 
 install lilith
 
@@ -25,38 +29,27 @@ install lilith
 $ npm install lilith-cli -g
 ```
 
-假设项目目录结构如下,`$ lilith run dev` 将自动以`./src/index`作为入口启动 `webpack devserver`;
 
-```bash
-├── README.md
-├── lilith.config.js
-├── mock
-│   └── api.json
-├── package.json
-├── src
-│   └── index.tsx
-└── yarn.lock
-```
+## 命令
 
-## 命令介绍
+### create
 
-### Create
-
-lilith 创建命令，根据命令提示创建项目脚手架或者`lilith template`
+lilith 创建命令，根据命令提示，创建项目脚手架或者项目模板
 
 `$ lilith create <name>`
+- `<name>` 项目名称
 
 
-### Run 
+###run
 
-编译命令零配置运行现有项目，默认打包入口为`./src/index`
+编译命令零配置运行现有项目，默认打包入口为`./src/index`；
 
 `$ run <mode> [source]` 
 
 - `<mode>` 编译模式现在支持三种模式 `dev`（webpack dev server模板）； `build`（webpack production 模式） `template`（lilith template 模式，配合 new 命令使用）；
-- `[source]` 编译源默为`@qfed/lilith-compiler` 支持 `react` 与 `typescript` ，现提供两种编译源 `react` 与 `vue` `npm run dev` 即编译 `react` 项目， `npm run dev vue` 即编译 `vue` 项目，`[source]` 也可以是符合 Lilith 编译规范自定义源；
+- `[source]` 编译源，可以直接使用 `react` 或 `vue`；也可以是符合 Lilith 编译规范自定义源，默为`@qfed/lilith-compiler`，
 
-example:
+示例:
 
 - `$ lilith run dev`
 - `$ lilith run dev vue`
@@ -65,25 +58,27 @@ example:
 
 
 
-### New
+### template
 
-模板创建命令根据现有模板创建新页面,默认在当前项目的根目录下的`_template`目录，获取项目模板[更多用法详见](https://github.com/advence-liz/quickly-template)；
+根据模板创建新页面，模板默认目录：当前项目的根目录下的`_template`目录，获取项目模板[更多用法详见](https://github.com/advence-liz/quickly-template)；
 
 `$ lilith new <template> <name> [target]`
 
-- `<template>` 要创建的页面，支持简写只要满足startsWith就会认为匹配
-- `<name>` 页面名称
-- `[target]` 页面输出目录，默认`process.cwd()`
+- `<template>` 模板页面，支持简写（需满足startsWith）
+- `<name>` 新页面名称
+- `[target]` 新页面输出目录，默认`process.cwd()`
 
-example:
+示例:
 
-- `$ lilith new page new-page` 以page为模板创建一下新模块new-page并输出到当前目录；
-- `$ lilith new pa new-page` 同样是以page为模板创建一下新模块new-page并输出到当前目录，因为template支持简写形式，简写只要满足startsWith就会认为其相等的；
-- `$ lilith new page new-page pages` 以page为模板创建一下新模块new-page并输出到pages目录；
+- `$ lilith new page new-page` 以page为模板，创建一个新页面new-page，并输出到当前目录；
+- `$ lilith new pa new-page` 与下面命令功能相同，template支持简写形式，简写只要满足startsWith就会认为其相等的；
+- `$ lilith new page new-page pages` 以page为模板，创建一个新页面new-page，并输出到pages目录；
 
-## 关于 template 模式
 
-Lilith 不仅是零配置 webpack 运行工具，同时也是模板生成工具，并且生成的模板可以独立运行，lilith template 中包含以下功能；
+
+## 关于模板
+
+Lilith 不仅是零配置 webpack 运行工具，同时也是模板生成工具，且生成的模板可以独立运行，lilith template 中包含以下功能；
   - 编译运行模版语法
   - 注入略加封装的Request工具
   - Mock服务[了解更多-json-server-router](https://github.com/advence-liz/json-server-router)
@@ -124,12 +119,12 @@ module.exports = {
 }
 ```
 
-## exmaple
+##示例
 
-- [example/lilith-tempate](./packages/lilith-cli/example/lilith-template/) lilith 模板 demo；
-- [example/overwrite-webpack-config](./packages/lilith-cli/example/overwrite-webpack-config/) lilith 重写 webpack demo；
-- [example/vue](./packages/lilith-cli/example/vue/) lilith vue 编译 demo；
-- [example/lilith-template-vue](./packages/lilith-cli/example/lilith-template-vue/) lilith 模板 vue demo；
+- [example/lilith-tempate](./packages/example/lilith-template-react/) lilith 编译 React 模板demo；
+- [example/overwrite-webpack-config](./packages/example/overwrite-webpack-config/) lilith 重写 webpack demo；
+- [example/vue](./packages/example/vue/) lilith vue编译 demo；
+- [example/lilith-template-vue](./packages/example/lilith-template-vue/) lilith 编译 vue 模板 demo；
 
 
 ## CLI usage
