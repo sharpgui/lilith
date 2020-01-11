@@ -3,7 +3,7 @@ import { render } from 'react-dom'
 import { login } from './services'
 
 
-export default class {{name|pascal}} extends Component {
+export default class __name_pascal__ extends Component {
 
   componentDidMount() {   
     login

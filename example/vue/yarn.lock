@@ -4253,8 +4253,8 @@ levn@~0.3.0:
 
 lilith-compiler-vue@^1.0.0:
   version "1.0.0"
-  resolved "https://registry.npmjs.org/lilith-compiler-vue/-/lilith-compiler-vue-1.0.0.tgz#e212fb2ac583a631ba413d7aead7492cabfa9735"
-  integrity sha512-PA8zmb9sMrv0azz/Z5xWPJboEhStkCPc+nqK4bq+feZFeom7aKK8yUcc153kRYi+M9uA6RBy48qcix5BA/KcDQ==
+  resolved "https://registry.npm.taobao.org/lilith-compiler-vue/download/lilith-compiler-vue-1.0.0.tgz#e212fb2ac583a631ba413d7aead7492cabfa9735"
+  integrity sha1-4hL7KsWDpjG6QT166tdJLKv6lzU=
   dependencies:
     "@babel/cli" "^7.5.5"
     "@babel/core" "^7.5.5"
