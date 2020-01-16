@@ -1,8 +1,8 @@
-#<center>Lilith</center>
-<center>一个集模板构建、模板独立运行及零配置webpack编译的工具</center>
+# Lilith
+一个集模板构建、模板独立运行及零配置webpack编译的工具
 
 
-##提供的功能
+## 提供的功能
 - 模板构建
 - 独立运行模板
 - 零配置webpack编译，支持React与Vue两种编译方式（默认Reac编译模式）
@@ -121,10 +121,10 @@ module.exports = {
 
 ##示例
 
-- [example/lilith-tempate](./packages/example/lilith-template-react/) lilith 编译 React 模板demo；
-- [example/overwrite-webpack-config](./packages/example/overwrite-webpack-config/) lilith 重写 webpack demo；
-- [example/vue](./packages/example/vue/) lilith vue编译 demo；
-- [example/lilith-template-vue](./packages/example/lilith-template-vue/) lilith 编译 vue 模板 demo；
+- [example/lilith-tempate](./example/lilith-template-react/) lilith 编译 React 模板demo；
+- [example/overwrite-webpack-config](./example/overwrite-webpack-config/) lilith 重写 webpack demo；
+- [example/vue](./example/vue/) lilith vue编译 demo；
+- [example/lilith-template-vue](./example/lilith-template-vue/) lilith 编译 vue 模板 demo；
 
 
 ## CLI usage
