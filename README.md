@@ -8,11 +8,10 @@
 - 零配置webpack编译，支持React与Vue两种编译方式（默认Reac编译模式）
 - 支持TypeScript
 
-
 ## 目录
 
-  - [安装](#安装)
-  - [命令](#用法)
+ - [Getting started](#getting-started)
+   - [命令](#用法)
     - [create](#create)
     - [run](#run)
     - [new](#new)
@@ -21,7 +20,7 @@
   - [示例](#示例)
   - [CLI usage](#cli-usage)
   
-## 安装
+## Getting started
 
 install lilith
 
@@ -29,6 +28,18 @@ install lilith
 $ npm install lilith-cli -g
 ```
 
+假设项目目录结构如下,`$ lilith run dev` 将自动以`./src/index`作为入口启动 `webpack devserver`;
+
+```bash
+├── README.md
+├── lilith.config.js
+├── mock
+│   └── api.json
+├── package.json
+├── src
+│   └── index.tsx
+└── yarn.lock
+```
 
 ## 命令
 
@@ -120,7 +131,7 @@ module.exports = {
 ```
 
 ## 示例
-
+- [example/lilith-single-file](./example/lilith-single-file)lilith编译单文件；
 - [example/lilith-tempate](./example/lilith-template-react/) lilith 编译 React 模板demo；
 - [example/overwrite-webpack-config](./example/overwrite-webpack-config/) lilith 重写 webpack demo；
 - [example/vue](./example/vue/) lilith vue编译 demo；
