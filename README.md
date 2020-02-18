@@ -12,7 +12,7 @@
 ## 目录
 
  - [Getting started](#getting-started)
-   - [命令](#用法)
+   - [命令](#命令)
     - [run](#run)
     - [compile](#compile)
     - [create](#create)
