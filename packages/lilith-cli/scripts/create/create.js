@@ -27,7 +27,7 @@ const inquireConfig = async function(type, source) {
       type: 'confirm',
       name: 'lang',
       message: '是否使用Typescript？',
-      default: true
+      default: false
     }
     // TODO  React Vue 区分
     // {
@@ -73,6 +73,7 @@ const inquireFileExistAndCopyTemplate = async function(
   targetPath,
   lang
 ) {
+  console.log(fromPath, targetPath, lang)
   if (fs.pathExistsSync(targetPath)) {
     const answer = await inquirer.prompt([
       {
@@ -96,7 +97,8 @@ const createLilithConfigFile = function(targetPath) {
 }
 
 module.exports = async function(templateName, type, source) {
-  const targetTemplatePath = join(process.cwd(), '_template', templateName)
+  const targetTemplatePath = join(process.cwd(), templateName)
+  // 命令行文件所在相对路径
   const fromTemplatePath = join(__dirname, '..', '..', '_template', 'template')
   const scaffoldTarget = join(process.cwd(), templateName)
   const inquireResult = await inquireConfig(type, source)
