@@ -13,7 +13,6 @@
   ],
   "husky": {
     "hooks": {
-      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true",
       "pre-commit": "lint-staged"
     }
   },
@@ -30,18 +29,12 @@
     "singleQuote": true
   },
   "devDependencies": {
-    "cz-conventional-changelog": "^3.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-react": "^7.17.0",
     "husky": "^3.1.0",
     "lerna": "^3.19.0",
     "lint-staged": "^9.5.0",
     "prettier-eslint-cli": "^5.0.0"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
   },
   "name": "lilith"
 }
