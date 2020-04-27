@@ -1,6 +1,7 @@
 {
   "name": "lilith-compiler",
-  "description": "qfe 命令行工具",
+  "description": "命令行工具",
+  "version": "1.0.3",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
