@@ -1,6 +1,5 @@
 {
   "name": "lilith-cli",
-  "version": "1.0.2",
   "description": "命令行工具",
   "main": "index.js",
   "scripts": {
