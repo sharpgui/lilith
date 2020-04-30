@@ -10,6 +10,7 @@ function compiler(mode, source) {
   let compilerSource = source
   try {
     logger.info('source', source)
+    // 如果source 跟默认配置匹配则使用默认源，否则当做自定义源处理
     compilerSource = config.compiler[source] || source
   } catch (error) {} // eslint-disable-line
 
@@ -19,7 +20,7 @@ function compiler(mode, source) {
 
   logger.info(path.join(config.context, 'node_modules', currentSource))
 
-  // const notifier = updateNotifier({ pkg ,updateCheckInterval: 0})
+  // 检查更新逻辑
   try {
     const pkg = require(path.resolve(
       `./node_modules/${currentSource}/package.json`

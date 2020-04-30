@@ -7,7 +7,7 @@ const { REACT_COMPILER, VUE_COMPILER } = require('../config')
 const globalReactCompiler = REACT_COMPILER
 const globalVueCompiler = VUE_COMPILER
 const globalLilithPath = join(globalModules, 'lilith-cli')
-
+// FIXME 之前对lerna 的认知又问题，以为其管理的包 fixed 模式下都是统一版本号的其实不然
 module.exports = function(compilerType = 'react') {
   const compiler =
     compilerType === 'react' ? globalReactCompiler : globalVueCompiler

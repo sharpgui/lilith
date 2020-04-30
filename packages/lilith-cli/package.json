@@ -27,7 +27,6 @@
     "global-modules": "^2.0.0",
     "inquirer": "^7.0.0",
     "klaw-sync": "^6.0.0",
-    "log4js": "^6.1.0",
     "quickly-template": "^1.2.2",
     "shelljs": "^0.8.3",
     "update-notifier": "^4.0.0"

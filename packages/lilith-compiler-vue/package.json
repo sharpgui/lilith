@@ -1,10 +1,10 @@
 {
   "name": "lilith-compiler-vue",
   "version": "1.2.1",
-  "description": "qfe 命令行工具",
+  "description": "lilith vue 编译模板",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "node lib/run.js dev"
   },
   "keywords": [
     "cli",

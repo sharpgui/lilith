@@ -61,8 +61,10 @@ const checkFileTypeAndCompile = function(absolutePath, ext) {
   compareVersion(compilerType)
 
   if (!fs.existsSync(compilerPath)) {
-    logger.info(`npm i -g ${compiler}`)
-    exec(`npm i -g ${compiler}`)
+    logger.info(
+      `npm i -g ${compiler} --registry=https://registry.npm.taobao.org`
+    )
+    exec(`npm i -g ${compiler} --registry=https://registry.npm.taobao.org`)
   }
   const compileFunction = require(join(compilerPath, 'build/build.dev.js'))
 
@@ -76,7 +78,7 @@ const checkFileTypeAndCompile = function(absolutePath, ext) {
 
   // logger.info('当前依赖调用目录', parse(findupSync('package.json')).dir)
   compileFunction({
-    context: join(globalModules, compiler),
+    // context: join(globalModules, compiler),
     entry: absolutePath,
     resolve: {
       modules
