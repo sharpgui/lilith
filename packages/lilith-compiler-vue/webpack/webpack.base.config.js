@@ -1,10 +1,10 @@
-const autoprefixer = require('autoprefixer')
-const cssnano = require('cssnano')
-const babelLilith = require('../babel.lilith')
 const path = require('path')
+const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
-const { join } = require('path')
+const { VueLoaderPlugin } = require('vue-loader')
+const babelConfig = require('../babel.lilith.js')
+
+const isProd = process.env.NODE_ENV === 'production'
 
 module.exports = {
   entry: './src',
@@ -12,60 +12,62 @@ module.exports = {
     filename: 'js/[name].js'
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.scss', '.sass', '.less', '.css']
+    alias: {
+      public: path.resolve(__dirname, '../public')
+    }
   },
   module: {
+    noParse: /es6-promise\.js$/, // avoid webpack shimming process
     rules: [
       {
-        test: /\.(scss|sass|css)$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          {
-            loader: 'postcss-loader',
-            options: {
-              plugins: [autoprefixer(), cssnano({ preset: 'default' })]
-            }
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              outputStyle: 'expanded'
-            }
-          }
-        ]
-      },
-      {
-        test: /\.(less)$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          {
-            loader: 'postcss-loader',
-            options: {
-              plugins: [autoprefixer(), cssnano({ preset: 'default' })]
-            }
-          },
-          {
-            loader: 'less-loader',
-            options: { javascriptEnabled: true }
-          }
-        ]
-      },
-      {
         test: /\.vue$/,
-        loader: 'vue-loader'
+        loader: 'vue-loader',
+        options: {
+          compilerOptions: {
+            preserveWhitespace: false
+          }
+        }
+      },
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        options: babelConfig,
+        exclude: /node_modules/
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          name: '[name].[ext]?[hash]'
+        }
+      },
+      {
+        test: /\.scss$/,
+        use: ['vue-style-loader', 'css-loader', 'sass-loader']
       }
     ]
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: join(__dirname, '..', '/public/views/index.html'),
-      favicon: join(__dirname, '..', '/public/icon/favicon.ico')
-    }),
-    new VueLoaderPlugin()
-  ],
   performance: {
     hints: false
-  }
+  },
+  plugins: isProd
+    ? [
+      new HtmlWebpackPlugin({
+        template: path.join(__dirname, '..', '/public/views/index.html'),
+        favicon: path.join(__dirname, '..', '/public/icon/favicon.ico')
+      }),
+      new VueLoaderPlugin(),
+      new webpack.optimize.UglifyJsPlugin({
+        compress: { warnings: false }
+      }),
+      new webpack.optimize.ModuleConcatenationPlugin()
+    ]
+    : [
+      new HtmlWebpackPlugin({
+        template: path.join(__dirname, '..', '/public/views/index.html'),
+        favicon: path.join(__dirname, '..', '/public/icon/favicon.ico')
+      }),
+      new VueLoaderPlugin()
+    ]
 }

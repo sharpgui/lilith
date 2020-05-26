@@ -1,14 +1,14 @@
-<template>
-  <div id="app">
-    hello world!!!
-  </div>
-</template>
-
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+  render() {
+    return <div class="red">Hello</div>
+  }
 }
 </script>
 
-<style>
+<style lang="scss">
+.red {
+  color: red;
+}
 </style>

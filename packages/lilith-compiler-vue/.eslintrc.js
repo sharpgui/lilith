@@ -1,10 +1,11 @@
 module.exports = {
+  root: true,
   env: {
     commonjs: true,
     es6: true,
     node: true
   },
-  extends: 'eslint:recommended',
+  extends: ['eslint:recommended', 'plugin:vue/essential'],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly'
@@ -13,9 +14,10 @@ module.exports = {
     ecmaFeatures: {
       jsx: true
     },
+    sourceType: 'module',
     ecmaVersion: 2018
   },
-  plugins: ['react'],
+  plugins: ['vue'],
   rules: {
     indent: ['error', 2],
     'linebreak-style': ['error', 'unix'],
