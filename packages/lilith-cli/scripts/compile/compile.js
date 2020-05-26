@@ -67,9 +67,9 @@ const checkFileTypeAndCompile = function(absolutePath, ext) {
     exec(`npm i -g ${compiler} --registry=https://registry.npm.taobao.org`)
   }
   const compileFunction = require(join(compilerPath, 'build/build.dev.js'))
-
+  // 全局编译源对应的 node_modules 路径
   const modules = [join(globalModules, compiler, 'node_modules')]
-
+  // 本地
   try {
     modules.push(join(parse(findupSync('package.json')).dir, 'node_modules'))
   } catch (err) {
