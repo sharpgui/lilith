@@ -1,6 +1,6 @@
 {
   "name": "lilith-compiler-vue",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "lilith vue 编译模板",
   "main": "index.js",
   "scripts": {
