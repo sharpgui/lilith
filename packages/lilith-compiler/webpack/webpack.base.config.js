@@ -27,7 +27,6 @@ module.exports = {
       {
         test: /\.(scss|sass|css)$/,
         use: [
-          // 'cache-loader',
           'style-loader',
           'css-loader',
           {
@@ -45,28 +44,9 @@ module.exports = {
         ]
       },
       {
-        test: /\.(less)$/,
-        use: [
-          // 'cache-loader',
-          'style-loader',
-          'css-loader',
-          {
-            loader: 'postcss-loader',
-            options: {
-              plugins: [autoprefixer(), cssnano({ preset: 'default' })]
-            }
-          },
-          {
-            loader: 'less-loader',
-            options: { javascriptEnabled: true }
-          }
-        ]
-      },
-      {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: [
-          'cache-loader',
           {
             loader: 'babel-loader',
             options: babelConfig()
@@ -76,7 +56,6 @@ module.exports = {
       {
         test: /\.tsx?$/,
         use: [
-          'cache-loader',
           {
             loader: 'babel-loader',
             options: babelConfig()
@@ -89,9 +68,6 @@ module.exports = {
               configFile: path.resolve(__dirname, '../tsconfig.json')
             }
           }
-          // {
-          //   loader: 'art-template-loader'
-          // }
         ]
       }
     ]

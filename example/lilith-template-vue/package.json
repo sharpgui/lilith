@@ -13,9 +13,5 @@
   "author": "",
   "license": "ISC",
   "dependencies": {},
-  "devDependencies": {
-    "lilith-compiler": "^1.0.0",
-    "lilith-compiler-vue": "^0.0.1",
-    "vue": "^2.6.11"
-  }
+  "devDependencies": {}
 }

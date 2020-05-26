@@ -1,3 +1,3 @@
-# Lilith 编译独立运行vue模板DEMO
+# Lilith 编译独立运行 vue 模板 DEMO
 
-`$ npm run dev`
+`$ lilith run template --source vue`

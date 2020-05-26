@@ -1,3 +1,3 @@
 # Lilith 运行 vue
 
-`$ npm run dev`
+`$ lilith run dev --source=vue`

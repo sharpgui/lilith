@@ -14,8 +14,6 @@
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
-    "@qfed/lilith-compiler-vue": "^0.0.0",
-    "lilith-compiler-vue": "^1.0.0",
-    "vue": "^2.6.11"
+    "lilith-compiler": "^1.2.3"
   }
 }

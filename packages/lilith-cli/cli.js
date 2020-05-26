@@ -36,6 +36,7 @@ program
   // run
   .option('--mode <string>', '编译模式 template dev build', 'dev')
   .option('--source <string>', '编译源默认值 lilith-compiler', config.react)
+  .option('--entry <string>', '编译源默认值 lilith-compiler', './src/')
   .option('--type <string>', '创建的模版类型')
   .option('--scaffoldSource <string>', '脚手架下载源')
   .option('--dir <string>', '编译模版的目录')
@@ -57,12 +58,13 @@ program
  * lilith run build fex
  */
 program
-  .command('run <mode> [source]')
+  .command('run <mode> [entry]')
   .description('lilith 编译命令')
-  .action((mode, source) => {
-    let currentSource = source || program.opts().source
+  .action((mode, entry) => {
+    let { source } = program.opts()
+    let currentEntry = entry || program.opts().entry
     let currentMode = mode === 'build' ? 'prod' : mode
-    runCompiler(currentMode, currentSource)
+    runCompiler(currentMode, currentEntry, source)
   })
 
 /**
