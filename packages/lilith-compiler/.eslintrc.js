@@ -1,10 +1,12 @@
 module.exports = {
+  root: true,
   env: {
     commonjs: true,
     es6: true,
-    node: true
+    node: true,
+    browser: true
   },
-  extends: 'eslint:recommended',
+  extends: ['eslint:recommended', 'plugin:react/recommended'],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly'
@@ -13,6 +15,8 @@ module.exports = {
     ecmaFeatures: {
       jsx: true
     },
+    sourceType: 'module',
+
     ecmaVersion: 2018
   },
   plugins: ['react'],

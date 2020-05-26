@@ -1,14 +1,21 @@
-<template>
-  <div id="app">
-    hello world!!!
-  </div>
-</template>
-
 <script>
+import components from './components'
+
 export default {
-  name: 'app'
+  name: 'app',
+  components: components,
+  render() {
+    return (
+      <div>
+        <hello></hello>
+      </div>
+    )
+  }
 }
 </script>
 
-<style>
+<style lang="scss">
+.red {
+  color: red;
+}
 </style>
