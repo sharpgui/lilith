@@ -9,8 +9,7 @@ module.exports = {
         useBuiltIns: 'usage',
         corejs: 3
       }
-    ],
-    '@babel/preset-react'
+    ]
   ],
   plugins: [
     '@babel/plugin-transform-runtime',
@@ -32,6 +31,8 @@ module.exports = {
     '@babel/plugin-proposal-export-namespace-from',
     '@babel/plugin-proposal-throw-expressions',
     '@babel/plugin-syntax-dynamic-import',
-    '@babel/plugin-proposal-class-properties'
+    '@babel/plugin-proposal-class-properties',
+    'jsx-v-model',
+    'transform-vue-jsx'
   ]
 }
