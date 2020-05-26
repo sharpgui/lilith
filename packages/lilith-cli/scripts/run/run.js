@@ -31,10 +31,10 @@ function compiler(mode, entry, source) {
       `./node_modules/${currentSource}/package.json`
     ))
     const notifier = updateNotifier({ pkg })
-    notifier.update && shell.exec(`yarn add ${compilerSource} -D -P`)
+    notifier.update && shell.exec(`yarn add ${compilerSource} -D`)
   } catch (error) {
-    logger.info(`yarn add ${compilerSource} -D -P`)
-    shell.exec(`yarn  add ${compilerSource} -D -P`)
+    logger.info(`yarn add ${compilerSource} -D`)
+    shell.exec(`yarn  add ${compilerSource} -D`)
   }
   logger.info('load compileFunciton from', path.resolve(compileFuncitonPath))
   compileFunction = require(path.resolve(compileFuncitonPath))

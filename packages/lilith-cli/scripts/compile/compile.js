@@ -58,10 +58,11 @@ const checkFileTypeAndCompile = function(absolutePath, ext) {
   }
 
   // 对比cli和compiler的版本
-  compareVersion(compilerType)
+  // compareVersion(compilerType)
 
   if (!fs.existsSync(compilerPath)) {
     logger.info(
+      compilerPath,
       `npm i -g ${compiler} --registry=https://registry.npm.taobao.org`
     )
     exec(`npm i -g ${compiler} --registry=https://registry.npm.taobao.org`)

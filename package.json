@@ -32,5 +32,9 @@
     "lerna": "^3.19.0",
     "lint-staged": "^9.5.0",
     "prettier-eslint-cli": "^5.0.0"
+  },
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   }
 }
