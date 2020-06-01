@@ -95,6 +95,7 @@ program.on('--help', function() {
   console.log('Examples:')
   console.log('  $ lilith run dev')
   console.log('  $ lilith new template someTemplate')
+  console.log(' $ lilith run template --source vue')
 })
 
 program.parse(process.argv)

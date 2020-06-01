@@ -57,9 +57,12 @@ $ npm install lilith-cli -g
 示例:
 
 - `$ lilith run dev`
-- `$ lilith run dev vue`
 - `$ lilith run build`
 - `$ lilith run template`
+- `$ lilith run dev --source=vue`
+- `$ lilith run template --source=vue`
+
+
 
 ### compile
 
