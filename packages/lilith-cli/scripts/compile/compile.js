@@ -31,7 +31,7 @@ const getFilename = function(path) {
  */
 const getDirectoryHasTargetDep = (directory, dep) => {
   try {
-    const packageJson = fs.readFileSync(join(directory, 'package.json'))
+    const packageJson = fs.readJsonSync(join(directory, 'package.json'))
     const dependenciesKey = Object.keys(packageJson.dependencies || {}).concat(Object.keys(packageJson.devDependencies || {}))
     return dependenciesKey.includes(dep)
   } catch(e) {
@@ -94,8 +94,9 @@ const checkFileTypeAndCompile = function(absolutePath, ext) {
       logger.info('检测到当前目录下未安装React，即将自动安装...')
       const compilerDirectoryHasReact = getDirectoryHasTargetDep(join(globalModules, compiler), 'react')
       if (!compilerDirectoryHasReact) {
-        execSync(`cd ${join(globalModules, compiler)}`)
-        exec('npm i --save react react-dom')
+        exec('npm i --save react react-dom --registry=https://registry.npm.taobao.org', {
+          cwd: join(globalModules, compiler)
+        })
       }
     }
   }
