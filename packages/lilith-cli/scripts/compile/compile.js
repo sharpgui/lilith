@@ -23,7 +23,7 @@ const getFilename = function(path) {
   }
 }
 
-/** 
+/**
  * 判断某目录是否有对应的依赖
  * @param directory 目录
  * @param dep 依赖
@@ -31,10 +31,12 @@ const getFilename = function(path) {
  */
 const getDirectoryHasTargetDep = (directory, dep) => {
   try {
-    const packageJson = fs.readFileSync(join(directory, 'package.json'))
-    const dependenciesKey = Object.keys(packageJson.dependencies || {}).concat(Object.keys(packageJson.devDependencies || {}))
+    const packageJson = fs.readJsonSync(join(directory, 'package.json'))
+    const dependenciesKey = Object.keys(packageJson.dependencies || {}).concat(
+      Object.keys(packageJson.devDependencies || {})
+    )
     return dependenciesKey.includes(dep)
-  } catch(e) {
+  } catch (e) {
     return false
   }
 }
@@ -91,11 +93,18 @@ const checkFileTypeAndCompile = function(absolutePath, ext) {
         throw new Error('未安装 React相关依赖')
       }
     } catch (e) {
-      logger.info('检测到当前目录下未安装React，即将自动安装...')
-      const compilerDirectoryHasReact = getDirectoryHasTargetDep(join(globalModules, compiler), 'react')
+      const compilerDirectoryHasReact = getDirectoryHasTargetDep(
+        join(globalModules, compiler),
+        'react'
+      )
       if (!compilerDirectoryHasReact) {
-        execSync(`cd ${join(globalModules, compiler)}`)
-        exec('npm i --save react react-dom')
+        logger.info('检测到当前目录下未安装React，即将自动安装...')
+        exec(
+          'npm i --save react react-dom --registry=https://registry.npm.taobao.org',
+          {
+            cwd: join(globalModules, compiler)
+          }
+        )
       }
     }
   }
@@ -105,7 +114,7 @@ const checkFileTypeAndCompile = function(absolutePath, ext) {
   const compileFunction = require(join(compilerPath, 'build/build.dev.js'))
   // 全局编译源对应的 node_modules 路径
   const modules = [join(globalModules, compiler, 'node_modules')]
-  
+
   // 本地
   try {
     modules.push(join(parse(findupSync('package.json')).dir, 'node_modules'))
