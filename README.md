@@ -108,8 +108,6 @@ Lilith 不仅是零配置 webpack 运行工具，同时也是模板生成工具�
   - 配合 lilith new 命令智能生成模版页面
 
 ```bash
-# 全局安装lilith命令行工具
-$ npm i -g @qfed/lilith 
 
 # 创建开发模版的模版
 $ lilith create template <templateName> 
