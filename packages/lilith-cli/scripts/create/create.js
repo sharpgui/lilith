@@ -18,7 +18,7 @@ const inquireConfig = async function(type, source) {
   const questionArray = [
     {
       type: 'list',
-      choices: ['page-template 开发页面模版', 'scafold 项目脚手架'],
+      choices: ['page-template 开发页面模版', 'scaffold 项目脚手架'],
       default: 'page-template 开发页面模版',
       name: 'templateType',
       message: '请选择需要生成的模版类型 >'

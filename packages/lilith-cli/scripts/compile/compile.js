@@ -5,10 +5,18 @@ const { join, parse } = require('path')
 const walkSync = require('klaw-sync')
 const logger = require('../../lib/logger')
 const findupSync = require('findup-sync')
+const inquirer = require('inquirer')
 
 const { REACT_COMPILER, VUE_COMPILER } = require('../../config')
 const { execSync } = require('child_process')
 
+/**
+ * 获取文件名结构
+ * @param {string} path 路径
+ * @return {object} 
+ * @property filename 文件名
+ * @property ext 文件后缀
+ */
 const getFilename = function(path) {
   const pathArr = path.split('/')
   const len = pathArr.length
@@ -51,24 +59,50 @@ const vueCompilerName = VUE_COMPILER
 /**
  * 根据文件类型安装对应的编译源，并执行编译
  * @param {string} absolutePath 入口文件的绝对路径
+ * @param {string} ext 文件后缀
  */
-const checkFileTypeAndCompile = function(absolutePath, ext) {
+const checkFileTypeAndCompile = async function(absolutePath, ext) {
   // 如果是js或者React文件，则使用 lilith-compiler 进行编译
   let compilerPath = ''
   let compiler = ''
   let compilerType = ''
-  if (/tsx?$/.test(ext) || /jsx?$/.test(ext)) {
-    compilerPath = globalReactCompilerPath
-    compiler = reactCompilerName
-    compilerType = 'react'
+
+  /**
+   * @param {string} type 编译类型
+   */
+  const setCompilerType = function(type) {
+    if (type === 'react') {
+      compilerPath = globalReactCompilerPath
+      compiler = reactCompilerName
+      compilerType = 'react'
+    }
+    if (type === 'vue') {
+      compilerPath = globalVueCompilerPath
+      compiler = vueCompilerName
+      compilerType = 'vue'
+    }
   }
 
-  // FIXME VUE的启动文件不是vue结尾
-  // 如果是vue文件，则使用 VUE_COMPILER 进行编译
-  if (/vue$/.test(ext)) {
-    compilerPath = globalVueCompilerPath
-    compiler = vueCompilerName
-    compilerType = 'vue'
+  if (/tsx$/.test(ext) || /jsx$/.test(ext)) {
+    setCompilerType('react')
+  }
+
+  // 对于js/ts结尾的文件进行让用户判断选择
+  if (/js$/.test(ext) || /ts$/.test(ext)) {
+    const chooseResult = await inquirer.prompt([
+      {
+        type: 'list',
+        choices: ['react', 'vue'],
+        message: '请选择编译的框架',
+        name: 'compilerType',
+        default: 'react'
+      }
+    ])
+    if (chooseResult.compilerType === 'vue') {
+      setCompilerType('vue')
+    } else {
+      setCompilerType('react')
+    }
   }
 
   if (!compiler || !compilerPath) {
@@ -109,7 +143,28 @@ const checkFileTypeAndCompile = function(absolutePath, ext) {
     }
   }
 
-  // TODO vue
+  if (compilerType === 'vue') {
+    try {
+      const currentDirectoryHasReact = getDirectoryHasTargetDep('.', 'vue')
+      if (!currentDirectoryHasReact) {
+        throw new Error('未安装 Vue相关依赖')
+      }
+    } catch (e) {
+      const compilerDirectoryHasReact = getDirectoryHasTargetDep(
+        join(globalModules, compiler),
+        'vue'
+      )
+      if (!compilerDirectoryHasReact) {
+        logger.info('检测到当前目录下未安装Vue，即将自动安装...')
+        exec(
+          'npm i --save vue --registry=https://registry.npm.taobao.org',
+          {
+            cwd: join(globalModules, compiler)
+          }
+        )
+      }
+    }
+  }
 
   const compileFunction = require(join(compilerPath, 'build/build.dev.js'))
   // 全局编译源对应的 node_modules 路径
