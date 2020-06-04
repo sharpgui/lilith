@@ -21,7 +21,7 @@
   - [自定义配置](#自定义配置)
   - [示例](#示例)
   - [CLI usage](#cli-usage)
-  
+
 ## Getting started
 
 install lilith
@@ -49,10 +49,10 @@ $ npm install lilith-cli -g
 
 编译命令零配置运行现有项目，默认打包入口为`./src/index`；
 
-`$ run <mode> [source]` 
+`$ run <mode> [source]`
 
 - `<mode>` 编译模式现在支持三种模式 `dev`（webpack dev server模板）； `build`（webpack production 模式） `template`（lilith template 模式，配合 new 命令使用）；
-- `[source]` 编译源，可以直接使用 `react` 或 `vue`；也可以是符合 Lilith 编译规范自定义源，默为`@qfed/lilith-compiler`，
+- `[source]` 编译源，可以直接使用 `react` 或 `vue`；也可以是符合 Lilith 编译规范自定义源；
 
 示例:
 
@@ -108,11 +108,9 @@ Lilith 不仅是零配置 webpack 运行工具，同时也是模板生成工具�
   - 配合 lilith new 命令智能生成模版页面
 
 ```bash
-# 全局安装lilith命令行工具
-$ npm i -g @qfed/lilith 
 
 # 创建开发模版的模版
-$ lilith create template <templateName> 
+$ lilith create template <templateName>
 
 # 进入生成目录
 $ cd _template/<template name>
@@ -178,4 +176,4 @@ Examples:
   $ lilith run dev vue
   $ lilith run build vue
   $ lilith new template someTemplate
-```  
+```
