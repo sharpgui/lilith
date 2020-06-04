@@ -25,7 +25,6 @@ Options:
   --template <string>             当前使用的模板，模板可选范围即root下面指定的模板，支持简写即当前有模板page那么p,pa,pag等效
   --name <string>                 新生成模块的名称
   --mode <string>                 编译模式 template dev build (default: "dev")
-  --source <string>               编译源默认值 @qfed/lilith-compiler (default: "@qfed/lilith-compiler")
   --type <string>                 创建的模版类型
   -h, --help                      output usage information
 
@@ -38,4 +37,4 @@ Examples:
   $ lilith run dev
   $ lilith run dev
   $ lilith new template someTemplate
-```  
+```

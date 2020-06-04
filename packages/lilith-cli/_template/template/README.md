@@ -9,11 +9,9 @@
 
 ## 运行方式
 ```bash
-# 全局安装lilith命令行工具
-$ npm i -g @qfed/lilith 
 
 # 创建开发模版的模版
-$ lilith create template <template name> 
+$ lilith create template <template name>
 
 # 进入生成目录
 $ cd _template/<template name>
@@ -51,7 +49,7 @@ class  __name_pascal__{
   'hi, {{name|pascal}}'
   'hi, __name_pascal__'
   'hi, {{dirname|pascal}}'
-  
+
 }
 ```
 
@@ -79,10 +77,6 @@ module.exports = {
   webpack: {
 
   },
-  // 自定义编译源
-  compiler: {
-    template: '@qfed/lilith-compiler'
-  }
 }
 ```
 ## 内置工具
