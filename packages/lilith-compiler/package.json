@@ -1,6 +1,6 @@
 {
   "name": "lilith-compiler",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "lilith react 编译模板",
   "main": "index.js",
   "scripts": {
