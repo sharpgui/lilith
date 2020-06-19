@@ -3,6 +3,7 @@ const fs = require('fs-extra')
 const inquirer = require('inquirer')
 const download = require('./download')
 const copyCompile = require('./copyCompile')
+const creactReactApp = require('./creactReactApp')
 // TODO 填写为真正的脚手架地址
 const lilithScaffold = 'lilith-scaffold: https://test.com'
 const lilithConfigFile = `module.exports = {
@@ -14,21 +15,21 @@ const lilithConfigFile = `module.exports = {
   }
 }`
 
-const inquireConfig = async function(type, source) {
+const inquireConfig = async function (type, source) {
   const questionArray = [
     {
       type: 'list',
-      choices: ['page-template 开发页面模版', 'scaffold 项目脚手架'],
+      choices: ['page-template 开发页面模版', 'scaffold 项目脚手架', 'react'],
       default: 'page-template 开发页面模版',
       name: 'templateType',
-      message: '请选择需要生成的模版类型 >'
+      message: '请选择需要生成的模版类型 >',
     },
     {
       type: 'confirm',
       name: 'lang',
       message: '是否使用Typescript？',
-      default: false
-    }
+      default: false,
+    },
     // TODO  React Vue 区分
     // {
     //   type: 'list',
@@ -49,6 +50,11 @@ const inquireConfig = async function(type, source) {
   ) {
     return { ...answer, templateType: 'template' }
   }
+
+  if (templateType == 'react') {
+    return { ...answer, templateType: 'react' }
+  }
+
   let scaffoldUrl = {}
   if (!source) {
     scaffoldUrl = await inquirer.prompt([
@@ -56,19 +62,19 @@ const inquireConfig = async function(type, source) {
         type: 'input',
         name: 'scaffoldUrl',
         message: '请输入脚手架的下载源，不填则默认下载Lilith官方scaffold >',
-        default: lilithScaffold
-      }
+        default: lilithScaffold,
+      },
     ])
   }
 
   return {
     ...answer,
     templateType: 'scaffold',
-    scaffoldUrl: scaffoldUrl['scaffoldUrl'] || source
+    scaffoldUrl: scaffoldUrl['scaffoldUrl'] || source,
   }
 }
 
-const inquireFileExistAndCopyTemplate = async function(
+const inquireFileExistAndCopyTemplate = async function (
   fromPath,
   targetPath,
   lang
@@ -80,8 +86,8 @@ const inquireFileExistAndCopyTemplate = async function(
         type: 'confirm',
         default: false,
         name: 'exist',
-        message: '检测到目录已存在，是否覆盖？ >'
-      }
+        message: '检测到目录已存在，是否覆盖？ >',
+      },
     ])
     const { exist } = answer
     if (exist) {
@@ -92,11 +98,11 @@ const inquireFileExistAndCopyTemplate = async function(
   return copyCompile(fromPath, targetPath, !lang)
 }
 
-const createLilithConfigFile = function(targetPath) {
+const createLilithConfigFile = function (targetPath) {
   return fs.outputFileSync(`${targetPath}/lilith.config.js`, lilithConfigFile)
 }
 
-module.exports = async function(templateName, type, source) {
+module.exports = async function (templateName, type, source) {
   const targetTemplatePath = join(process.cwd(), templateName)
   // 命令行文件所在相对路径
   const fromTemplatePath = join(__dirname, '..', '..', '_template', 'template')
@@ -117,5 +123,10 @@ module.exports = async function(templateName, type, source) {
     return download(scaffoldUrl, templateName).then(
       createLilithConfigFile.bind(this, scaffoldTarget)
     )
+  }
+
+  // 如果选择react
+  if(templateType === 'react'){
+    return creactReactApp()
   }
 }
