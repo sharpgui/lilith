@@ -3,6 +3,7 @@ const fs = require('fs-extra')
 const inquirer = require('inquirer')
 const download = require('./download')
 const copyCompile = require('./copyCompile')
+const createVueScaffold = require('./vue/createVueScaffold')
 // TODO 填写为真正的脚手架地址
 const lilithScaffold = 'lilith-scaffold: https://test.com'
 const lilithConfigFile = `module.exports = {
@@ -14,6 +15,18 @@ const lilithConfigFile = `module.exports = {
   }
 }`
 
+const inquireLanguage = async function(type = 'template') {
+  const lang = await inquirer.prompt([
+    {
+      type: 'confirm',
+      name: 'lang',
+      message: '是否使用Typescript？',
+      default: false
+    },
+  ])
+  return { lang: lang.lang, templateType: type }
+}
+
 const inquireConfig = async function(type, source) {
   const questionArray = [
     {
@@ -23,20 +36,6 @@ const inquireConfig = async function(type, source) {
       name: 'templateType',
       message: '请选择需要生成的模版类型 >'
     },
-    {
-      type: 'confirm',
-      name: 'lang',
-      message: '是否使用Typescript？',
-      default: false
-    }
-    // TODO  React Vue 区分
-    // {
-    //   type: 'list',
-    //   choices: ['React', 'Vue'],
-    //   default: 'React',
-    //   name: 'frame',
-    //   message: '请选择使用的开发框架？'
-    // }
   ]
   type && questionArray.shift()
   const answer = await inquirer.prompt(questionArray)
@@ -47,7 +46,32 @@ const inquireConfig = async function(type, source) {
     templateType === 'page-template 开发页面模版' ||
     templateType === 'template'
   ) {
-    return { ...answer, templateType: 'template' }
+    const lang = await inquireLanguage('template')
+    return {
+      ...answer,
+      ...lang
+    }
+  }
+
+  const frameInquirer = await inquirer.prompt([
+    // TODO  React Vue 区分
+    {
+      type: 'list',
+      choices: ['React', 'Vue', '自定义'],
+      default: 'React',
+      name: 'frame',
+      message: '请选择使用的开发框架？'
+    }
+  ])
+  const { frame } = frameInquirer
+
+  if (frame === 'React' || frame === 'Vue') {
+    const lang = await inquireLanguage('scaffold')
+    return {
+      ...answer,
+      frame,
+      ...lang
+    }
   }
   let scaffoldUrl = {}
   if (!source) {
@@ -63,6 +87,7 @@ const inquireConfig = async function(type, source) {
 
   return {
     ...answer,
+    frame,
     templateType: 'scaffold',
     scaffoldUrl: scaffoldUrl['scaffoldUrl'] || source
   }
@@ -114,8 +139,22 @@ module.exports = async function(templateName, type, source) {
 
   // 如果选择脚手架
   if (templateType === 'scaffold') {
-    return download(scaffoldUrl, templateName).then(
-      createLilithConfigFile.bind(this, scaffoldTarget)
-    )
+    // 根据选择的frame来处理
+    switch (frame) {
+    // 如果是React则从create-react-app拉取
+    case 'React': {
+      break
+    }
+    // 如果是vue则从@vue/cli下拉取
+    case 'Vue': {
+      return createVueScaffold(templateName, lang)
+    }
+    // 如果是自定义则直接拉取提供的URL
+    case '自定义': {
+      return download(scaffoldUrl, templateName).then(
+        createLilithConfigFile.bind(this, scaffoldTarget)
+      )
+    }
+    } 
   }
 }
