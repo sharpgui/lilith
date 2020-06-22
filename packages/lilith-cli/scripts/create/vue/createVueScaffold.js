@@ -7,5 +7,5 @@ const presetUrl = {
 module.exports = function(templateName, useTs = false) {
   const lang = useTs ? 'ts' : 'js'
 
-  return shell.exec(`npx vue create --preset ${resolve(__dirname, presetUrl[lang])} ${templateName}`)
+  return shell.exec(`npx @vue/cli create --preset ${resolve(__dirname, presetUrl[lang])} ${templateName}`)
 }
