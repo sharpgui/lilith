@@ -4310,10 +4310,10 @@ levn@~0.3.0:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
 
-lilith-compiler-vue@^1.2.4:
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/lilith-compiler-vue/-/lilith-compiler-vue-1.2.4.tgz#50f12ff9e2c46b64de89465f05ed0d2763ef169d"
-  integrity sha512-TFkl3V57WJ0TsxUdzUIvwWpAZ+ZglbleY0jHJAbUf5pjhk7B4nyDJqeoh4tzNyo20XCHvJmzLmB0kVnIZwex0w==
+lilith-compiler-vue@^1.2.5:
+  version "1.2.5"
+  resolved "https://registry.npm.taobao.org/lilith-compiler-vue/download/lilith-compiler-vue-1.2.5.tgz#e4dc7e6891acadd68206be410f0472ca5cacae17"
+  integrity sha1-5Nx+aJGsrdaCBr5BDwRyylysrhc=
   dependencies:
     "@babel/cli" "^7.5.5"
     "@babel/core" "^7.5.5"

@@ -1,5 +1,4 @@
 const shell = require('shelljs')
-const inquirer = require('inquirer')
 const fs = require('fs-extra')
 const path = require('path')
 const logger = require('../../../lib/logger')
@@ -56,7 +55,7 @@ module.exports = async (name, lang) => {
   await fs.ensureDirSync(tempPath)
   await downloadTemplate(tempPath, reactAppPath)
   await fs.copy(tempPath + reactAppPath, path.resolve(name), async () => {
-    await fs.remove(tempPath + '/packages')
+    await fs.remove(tempPath)
     const packageJsonFile = path.join(path.resolve(name), './package.json')
     logger.info(packageJsonFile)
     await updatePackagejson(packageJsonFile)

@@ -5,8 +5,6 @@ const download = require('./download')
 const copyCompile = require('./copyCompile')
 const creacteReactApp = require('./react/creacteReactApp')
 const createVueScaffold = require('./vue/createVueScaffold')
-// TODO 填写为真正的脚手架地址
-const lilithScaffold = 'lilith-scaffold: https://test.com'
 const lilithConfigFile = `module.exports = {
   // 自定义webpack配置
   webpack: {
@@ -15,7 +13,7 @@ const lilithConfigFile = `module.exports = {
   compiler: {
   }
 }`
-
+// 是否使用Typescript？
 const inquireLanguage = async function(type = 'template') {
   const lang = await inquirer.prompt([
     {
@@ -23,7 +21,7 @@ const inquireLanguage = async function(type = 'template') {
       name: 'lang',
       message: '是否使用Typescript？',
       default: false
-    },
+    }
   ])
   return { lang: lang.lang, templateType: type }
 }
@@ -36,7 +34,7 @@ const inquireConfig = async function(type, source) {
       default: 'page-template 开发页面模版',
       name: 'templateType',
       message: '请选择需要生成的模版类型 >'
-    },
+    }
   ]
   type && questionArray.shift()
   const answer = await inquirer.prompt(questionArray)
@@ -55,7 +53,6 @@ const inquireConfig = async function(type, source) {
   }
 
   const frameInquirer = await inquirer.prompt([
-    // TODO  React Vue 区分
     {
       type: 'list',
       choices: ['React', 'Vue', '自定义'],
@@ -80,8 +77,8 @@ const inquireConfig = async function(type, source) {
       {
         type: 'input',
         name: 'scaffoldUrl',
-        message: '请输入脚手架的下载源，不填则默认下载Lilith官方scaffold >',
-        default: lilithScaffold
+        message: '请输入脚手架的下载源',
+        default: ''
       }
     ])
   }
@@ -111,6 +108,7 @@ const inquireFileExistAndCopyTemplate = async function(
     ])
     const { exist } = answer
     if (exist) {
+      fs.removeSync(targetPath)
       return copyCompile(fromPath, targetPath, !lang)
     }
   }
@@ -139,7 +137,7 @@ module.exports = async function(templateName, type, source) {
   }
 
   // 如果选择脚手架
-  if (templateType === 'scaffold') {
+  else if (templateType === 'scaffold') {
     // 根据选择的frame来处理
     switch (frame) {
     // 如果是React则从create-react-app拉取
@@ -156,6 +154,6 @@ module.exports = async function(templateName, type, source) {
         createLilithConfigFile.bind(this, scaffoldTarget)
       )
     }
-    } 
+    }
   }
 }

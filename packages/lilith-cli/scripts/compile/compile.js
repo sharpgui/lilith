@@ -8,12 +8,11 @@ const findupSync = require('findup-sync')
 const inquirer = require('inquirer')
 
 const { REACT_COMPILER, VUE_COMPILER } = require('../../config')
-const { execSync } = require('child_process')
 
 /**
  * 获取文件名结构
  * @param {string} path 路径
- * @return {object} 
+ * @return {object}
  * @property filename 文件名
  * @property ext 文件后缀
  */
@@ -156,12 +155,9 @@ const checkFileTypeAndCompile = async function(absolutePath, ext) {
       )
       if (!compilerDirectoryHasReact) {
         logger.info('检测到当前目录下未安装Vue，即将自动安装...')
-        exec(
-          'npm i --save vue --registry=https://registry.npm.taobao.org',
-          {
-            cwd: join(globalModules, compiler)
-          }
-        )
+        exec('npm i --save vue --registry=https://registry.npm.taobao.org', {
+          cwd: join(globalModules, compiler)
+        })
       }
     }
   }

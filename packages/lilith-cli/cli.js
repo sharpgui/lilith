@@ -54,8 +54,8 @@ program
  * lilith run dev
  * lilith run buil
  * lilith run template
- * lilith run dev fex
- * lilith run build fex
+ * lilith run dev --source=vue
+ * lilith run build --source=git.xxx
  */
 program
   .command('run <mode> [entry]')
@@ -94,8 +94,9 @@ program.on('--help', function() {
   console.log('')
   console.log('Examples:')
   console.log('  $ lilith run dev')
+  console.log('  $ lilith run dev --source vue')
+  console.log('  $ lilith run template --source vue')
   console.log('  $ lilith new template someTemplate')
-  console.log(' $ lilith run template --source vue')
 })
 
 program.parse(process.argv)
