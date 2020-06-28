@@ -3,6 +3,7 @@ const fs = require('fs-extra')
 const inquirer = require('inquirer')
 const download = require('./download')
 const copyCompile = require('./copyCompile')
+const creacteReactApp = require('./react/creacteReactApp')
 const createVueScaffold = require('./vue/createVueScaffold')
 // TODO 填写为真正的脚手架地址
 const lilithScaffold = 'lilith-scaffold: https://test.com'
@@ -143,7 +144,7 @@ module.exports = async function(templateName, type, source) {
     switch (frame) {
     // 如果是React则从create-react-app拉取
     case 'React': {
-      break
+      return creacteReactApp(templateName, lang)
     }
     // 如果是vue则从@vue/cli下拉取
     case 'Vue': {
