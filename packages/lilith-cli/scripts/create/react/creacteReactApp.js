@@ -2,7 +2,7 @@ const shell = require('shelljs')
 const inquirer = require('inquirer')
 const fs = require('fs-extra')
 const path = require('path')
-const logger = require('../../lib/logger')
+const logger = require('../../../lib/logger')
 
 const downloadTemplate = function(tempPath, reactAppPath) {
   shell.exec('git init', { cwd: tempPath })
@@ -52,8 +52,8 @@ module.exports = async (name, lang) => {
   const reactAppPath = lang
     ? '/packages/cra-template-typescript'
     : '/packages/cra-template'
-  fs.remove(path.join(tempPath, './.git'))
-  fs.ensureDirSync(tempPath)
+  await fs.remove(path.join(tempPath, './.git'))
+  await fs.ensureDirSync(tempPath)
   await downloadTemplate(tempPath, reactAppPath)
   await fs.copy(tempPath + reactAppPath, path.resolve(name), async () => {
     await fs.remove(tempPath + '/packages')
