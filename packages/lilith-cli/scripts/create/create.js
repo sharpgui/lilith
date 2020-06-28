@@ -127,6 +127,6 @@ module.exports = async function(templateName, type, source) {
 
   // 如果选择react
   if (templateType === 'react') {
-    return creactReactApp(templateName)
+    return creactReactApp(templateName, lang)
   }
 }

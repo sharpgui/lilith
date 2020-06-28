@@ -4,14 +4,14 @@ const fs = require('fs-extra')
 const path = require('path')
 const logger = require('../../lib/logger')
 
-const downloadTemplate = function(tempPath) {
+const downloadTemplate = function(tempPath, reactAppPath) {
   shell.exec('git init', { cwd: tempPath })
   shell.exec(
     'git remote add -f origin git@github.com:facebook/create-react-app.git',
     { cwd: tempPath }
   )
   shell.exec('git config core.sparsecheckout true', { cwd: tempPath })
-  shell.exec('echo packages/cra-template >> .git/info/sparse-checkout', {
+  shell.exec(`echo ${reactAppPath} >> .git/info/sparse-checkout`, {
     cwd: tempPath
   })
   shell.exec('git pull origin master', { cwd: tempPath })
@@ -47,18 +47,18 @@ const updatePackagejson = function(packageJsonFile) {
   )
 }
 
-module.exports = async name => {
+module.exports = async (name, lang) => {
   const tempPath = path.resolve('.lilith-temp')
+  const reactAppPath = lang
+    ? '/packages/cra-template-typescript'
+    : '/packages/cra-template'
+  fs.remove(path.join(tempPath, './.git'))
   fs.ensureDirSync(tempPath)
-  await downloadTemplate(tempPath)
-  await fs.copy(
-    tempPath + '/packages/cra-template',
-    path.resolve(name),
-    async () => {
-      await fs.remove(tempPath + '/packages')
-      const packageJsonFile = path.join(path.resolve(name), './package.json')
-      logger.info(packageJsonFile)
-      await updatePackagejson(packageJsonFile)
-    }
-  )
+  await downloadTemplate(tempPath, reactAppPath)
+  await fs.copy(tempPath + reactAppPath, path.resolve(name), async () => {
+    await fs.remove(tempPath + '/packages')
+    const packageJsonFile = path.join(path.resolve(name), './package.json')
+    logger.info(packageJsonFile)
+    await updatePackagejson(packageJsonFile)
+  })
 }
