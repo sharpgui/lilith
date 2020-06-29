@@ -19,45 +19,43 @@ const downloadTemplate = function(tempPath, reactAppPath) {
 const updatePackagejson = function(packageJsonFile) {
   fs.outputFile(
     packageJsonFile,
-    `
-    {
-      "scripts": {
-        "dev": "lilith run dev",
-        "mock": "jsr -r mock -p 3001 -w",
-        "test": "echo 'Error: no test specified' && exit 1"
-      },
-      "keywords": [
-        "cli",
-        "webpack",
-        "babel",
-        "compiler"
-      ],
-      "author": "",
-      "license": "ISC",
-      "dependencies": {
-        "react": "^16.13.1",
-        "react-dom": "^16.13.1"
-      },
-      "devDependencies": {
-        "lilith-compiler": "^1.2.4"
-      }
-    }
-  `
+    `{
+  "scripts": {
+    "dev": "lilith run dev",
+    "mock": "jsr -r mock -p 3001 -w",
+    "test": "echo 'Error: no test specified' && exit 1"
+  },
+  "keywords": [
+    "cli",
+    "webpack",
+    "babel",
+    "compiler"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "lilith-compiler": "^1.2.4"
+  }
+}
+`
   )
 }
 
 module.exports = async (name, lang) => {
   const tempPath = path.resolve('.lilith-temp')
   const reactAppPath = lang
-    ? '/packages/cra-template-typescript'
-    : '/packages/cra-template'
+    ? '/packages/cra-template-typescript/template'
+    : '/packages/cra-template/template'
   await fs.remove(path.join(tempPath, './.git'))
   await fs.ensureDirSync(tempPath)
   await downloadTemplate(tempPath, reactAppPath)
-  await fs.copy(tempPath + reactAppPath, path.resolve(name), async () => {
-    await fs.remove(tempPath)
-    const packageJsonFile = path.join(path.resolve(name), './package.json')
-    logger.info(packageJsonFile)
-    await updatePackagejson(packageJsonFile)
-  })
+  await fs.copy(tempPath + reactAppPath, path.resolve(name))
+  await fs.remove(tempPath)
+  const packageJsonFile = path.join(path.resolve(name), './package.json')
+  logger.info(packageJsonFile)
+  await updatePackagejson(packageJsonFile)
 }
