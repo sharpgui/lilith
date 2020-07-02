@@ -58,4 +58,13 @@ module.exports = async (name, lang) => {
   const packageJsonFile = path.join(path.resolve(name), './package.json')
   logger.info(packageJsonFile)
   await updatePackagejson(packageJsonFile)
+  const indexFilePath = path.join(
+    path.resolve(name),
+    'src',
+    lang ? 'index.tsx' : 'index.js'
+  )
+  await fs.ensureFileSync(indexFilePath)
+  let indexContent = fs.readFileSync(indexFilePath, 'utf8')
+  indexContent = indexContent.replace('reportWebVitals();', '')
+  await fs.writeFileSync(indexFilePath, indexContent, 'utf8')
 }
