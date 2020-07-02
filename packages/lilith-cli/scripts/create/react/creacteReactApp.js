@@ -38,7 +38,7 @@ const updatePackagejson = function(packageJsonFile) {
     "react-dom": "^16.13.1"
   },
   "devDependencies": {
-    "lilith-compiler": "^1.2.4"
+    "lilith-compiler": "latest"
   }
 }
 `
