@@ -1,8 +1,8 @@
 # Lilith
 
-- 一个页面模板构建工具，并且模板可以独立运行（类似 umi block）；
 - 一个零配置webpack编译工具（类似 create-react-app）；
 - 提供 react 和 vue 的两种编译方式，默认为 react 编译模式；
+- 一个页面模板构建工具，并且模板可以独立运行（类似 umi block）；
 
 ## exmaple
 

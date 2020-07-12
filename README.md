@@ -6,8 +6,8 @@
 
 - 零配置webpack编译，支持React与Vue两种编译方式（默认Reac编译模式）
 - 支持TypeScript
-- 模板构建
-- 独立运行模板
+- 页面模板构建，独立运行模板
+- 定制自己的零配置编译工具
 
 ## 目录
 
@@ -34,7 +34,6 @@ $ npm install lilith-cli -g
 
 ```bash
 ├── README.md
-├── lilith.config.js
 ├── mock
 │   └── api.json
 ├── package.json
@@ -126,17 +125,20 @@ $ npm install && npm run dev
 
 lilith 可以通过配置 lilith.config.js 文件，定制化模版编译的内容及源，
 
+- 自定义 webpack 配置，通过在配置文件中添加 webpack 对象实现。（通过[webpack-merge](https://github.com/survivejs/webpack-merge)合并）
+- 自定义编译源，通过配置 source 自定义编译源，source 为合并的NPM包地址。
+
 ```javascript
+// lilith.config.js
 module.exports = {
-  // 自定义webpack配置
+  // // 自定义webpack配置
+  // webpack: require('./webpack.config.js')
   webpack: {
     entry: './src/'
   },
+ 
   // 自定义编译源
-  compiler: {
-    react: 'lilith-compiler'
-    vue:'lilith-compiler-vue'
-  }
+  source: '合法的NPM包地址'
 }
 ```
 
