@@ -12,7 +12,16 @@ module.exports = {
     filename: 'js/[name].js'
   },
   resolve: {
-    extensions: ['.vue', '.js', '.jsx', '.scss', '.sass', '.less', '.css']
+    extensions: [
+      '.vue',
+      '.js',
+      '.ts',
+      '.jsx',
+      '.scss',
+      '.sass',
+      '.less',
+      '.css'
+    ]
   },
   module: {
     noParse: /es6-promise\.js$/, // avoid webpack shimming process
@@ -31,6 +40,14 @@ module.exports = {
         loader: 'babel-loader',
         options: babelConfig,
         exclude: /node_modules/
+      },
+      {
+        test: /\.tsx?$/,
+        loader: 'ts-loader',
+        exclude: /node_modules/,
+        options: {
+          appendTsSuffixTo: [/\.vue$/]
+        }
       },
       {
         test: /\.(png|jpg|gif|svg)$/,

@@ -2,16 +2,14 @@
   "compilerOptions": {
     "sourceMap": true,
     "module": "esnext",
-    "target": "es2015",
+    "target": "es5",
     "noImplicitAny": false,
-    "jsx": "react",
     "allowJs": true,
     "lib": ["es2018", "dom"],
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "experimentalDecorators": true,
     "strictNullChecks": true,
-    "jsxFactory": "React.createElement",
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
     "skipLibCheck": true
