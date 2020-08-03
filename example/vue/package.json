@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "lilith run dev vue",
+    "dev": "lilith run dev --source=vue",
     "mock": "jsr -r mock -p 3001 -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

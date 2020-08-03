@@ -6,12 +6,13 @@ const logger = require('../../lib/logger')
 const config = require('../../config')
 
 function compiler(mode, entry, source) {
-  logger.info(`当前工作目录: ${process.cwd()}`)
+  logger.info(`当前工作目录: ${process.cwd()}`, source)
   let compilerSource = config['react']
   try {
-    logger.info('source', source)
     // 如果source 跟默认配置匹配则使用默认源，否则当做自定义源处理
-    compilerSource = config.compiler[source] || source
+
+    compilerSource = config[source]
+    logger.info('source', compilerSource)
   } catch (error) {} // eslint-disable-line
   // mode 等于 template 不支持自定义路径
   let currentEntry =
