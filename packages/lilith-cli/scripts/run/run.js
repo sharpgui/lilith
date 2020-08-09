@@ -7,13 +7,11 @@ const config = require('../../config')
 
 function compiler(mode, entry, source) {
   logger.info(`当前工作目录: ${process.cwd()}`, source)
-  let compilerSource = config['react']
-  try {
-    // 如果source 跟默认配置匹配则使用默认源，否则当做自定义源处理
-
+  let compilerSource = source
+  // 如果配默认编译源，则重编译源中读取默认编译源
+  if (['react', 'vue'].includes(source)) {
     compilerSource = config[source]
-    logger.info('source', compilerSource)
-  } catch (error) {} // eslint-disable-line
+  }
   // mode 等于 template 不支持自定义路径
   let currentEntry =
     mode === 'template' ? path.resolve('.lilith') : path.resolve(entry)

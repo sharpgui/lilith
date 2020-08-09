@@ -35,7 +35,7 @@ program
   .option('--name <string>', '新生成模块的名称')
   // run
   .option('--mode <string>', '编译模式 template dev build', 'dev')
-  .option('--source <string>', '编译源默认值 lilith-compiler', config.react)
+  .option('--source <string>', '编译源默认值 lilith-compiler', 'react')
   .option('--entry <string>', '编译源默认值 lilith-compiler', './src/')
   .option('--type <string>', '创建的模版类型')
   .option('--scaffoldSource <string>', '脚手架下载源')
@@ -52,7 +52,7 @@ program
 // 编译命令相关控制
 /**
  * lilith run dev
- * lilith run buil
+ * lilith run build
  * lilith run template
  * lilith run dev --source=vue
  * lilith run build --source=git.xxx
