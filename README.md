@@ -60,7 +60,9 @@ $ npm install lilith-cli -g
 - `$ lilith run dev test`  // 以根目录下 `test`目录为入口
 - `$ lilith run build`
 - `$ lilith run template`
+- `$ lilith run dev --source=react`
 - `$ lilith run dev --source=vue`
+- `$ lilith run dev -s=vue`
 - `$ lilith run template --source=vue`
 
 
