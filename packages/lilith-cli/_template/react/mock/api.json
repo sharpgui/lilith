@@ -1,0 +1,6 @@
+{
+  "test": { "code": 200, "data": "test" },
+  "register": { "code": 200, "data": "register" },
+  "authCode": { "code": 200, "data": "authCode" }
+
+}

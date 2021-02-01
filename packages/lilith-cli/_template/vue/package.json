@@ -1,0 +1,22 @@
+{
+  "scripts": {
+    "dev": "lilith run dev --source=vue",
+    "mock": "jsr -r mock -p 3001 -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cli",
+    "webpack",
+    "babel",
+    "compiler"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "vue": "^2.6.11"
+  },
+  "devDependencies": {
+    "lilith-compiler": "^1.2.3",
+    "lilith-compiler-vue": "^1.2.5"
+  }
+}

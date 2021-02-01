@@ -72,7 +72,7 @@ program
  * @templateName 模版/脚手架名称
  */
 program
-  .command('create <templateName>')
+  .command('create <name>')
   .description('lilith 创建命令，根据提示可以创建项目脚手架或者lilith模板')
   .action(templateName => {
     create(templateName)

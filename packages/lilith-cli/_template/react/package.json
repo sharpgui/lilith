@@ -1,0 +1,22 @@
+{
+  "scripts": {
+    "dev": "lilith run dev",
+    "mock": "jsr -r mock -p 3001 -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cli",
+    "webpack",
+    "babel",
+    "compiler"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "lilith-compiler": "^1.2.6"
+  }
+}
