@@ -1,6 +1,6 @@
 {
   "name": "lilith-compiler-vue",
-  "version": "1.2.8",
+  "version": "1.3.0",
   "description": "lilith vue 编译模板",
   "main": "index.js",
   "scripts": {
@@ -43,13 +43,13 @@
     "sass-loader": "^7.3.1",
     "shelljs": "^0.8.3",
     "style-loader": "^1.0.0",
+    "vue": "^2.6.11",
     "vue-loader": "^15.7.2",
     "vue-template-compiler": "^2.6.11",
     "webpack": "^4.39.2",
     "webpack-cli": "^3.3.7",
     "webpack-dev-server": "^3.8.0",
-    "webpack-merge": "^4.2.1",
-    "vue": "^2.6.11"
+    "webpack-merge": "^4.2.1"
   },
   "devDependencies": {
     "@typescript-eslint/parser": "^3.6.1",
