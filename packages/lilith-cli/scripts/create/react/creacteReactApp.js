@@ -6,7 +6,7 @@ const logger = require('../../../lib/logger')
 const downloadTemplate = function(tempPath, reactAppPath) {
   shell.exec('git init', { cwd: tempPath })
   shell.exec(
-    'git remote add -f origin git@github.com:facebook/create-react-app.git',
+    'git remote add -f origin https://github.com/facebook/create-react-app.git',
     { cwd: tempPath }
   )
   shell.exec('git config core.sparsecheckout true', { cwd: tempPath })
