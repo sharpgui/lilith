@@ -1,33 +1,40 @@
 const path = require('path')
 const fs = require('fs-extra')
+const glob = require('glob')
 const updateNotifier = require('update-notifier')
 const shell = require('shelljs')
 const logger = require('../../lib/logger')
 const config = require('../../config')
 
-function compiler(mode, entry, source) {
-  logger.info(`当前工作目录: ${process.cwd()}`, source)
-  let compilerSource = source
-  // 如果配默认编译源，则重编译源中读取默认编译源
-  if (['react', 'vue'].includes(source)) {
-    compilerSource = config[source]
-  }
+function isMatch(cwd, pattern) {
+  return glob.sync(path.join(cwd, '**', pattern)).length
+}
+
+function compiler(mode, entry) {
   // mode 等于 template 不支持自定义路径
   let currentEntry =
     mode === 'template' ? path.resolve('.lilith') : path.resolve(entry)
+
+  let compilerSource = config['react']
+
+  if (isMatch(currentEntry, '*.vue')) {
+    compilerSource = config['vue']
+  }
+
+  logger.info(`当前工作目录: ${process.cwd()}`, compilerSource)
+
   let compileFunction = () => {}
-  let currentSource = compilerSource
-  let compileFuncitonPath = `./node_modules/${currentSource}/build/build.${mode}.js`
+  let compileFuncitonPath = `./node_modules/${compilerSource}/build/build.${mode}.js`
   logger.info(
     '编译源路径:',
-    path.join(config.context, 'node_modules', currentSource)
+    path.join(config.context, 'node_modules', compilerSource)
   )
   logger.info('入口文件:', compilerSource)
 
   // 检查更新逻辑
   try {
     const pkg = require(path.resolve(
-      `./node_modules/${currentSource}/package.json`
+      `./node_modules/${compilerSource}/package.json`
     ))
     const notifier = updateNotifier({ pkg })
     notifier.update && shell.exec(`yarn add ${compilerSource} -D`)

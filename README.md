@@ -48,10 +48,10 @@ $ npm install lilith-cli -g
 
 编译命令零配置运行现有项目，默认打包入口为`./src/index`；
 
-`$ run <mode> [entry] --source=react`
+`$ run <mode> [entry]
 
 - `<mode>` 编译模式现在支持三种模式 `dev`（webpack dev server模板）； `build`（webpack production 模式） `template`（lilith template 模式，配合 new 命令使用）；
-- `source` 编译源，可以直接使用 `react` 或 `vue`；也可以是符合 Lilith 编译规范自定义源；
+- ~~`source` 编译源，可以直接使用 `react` 或 `vue`；也可以是符合 Lilith 编译规范自定义源；~~ 现在自动识别打包资源是 `react` 还是 `vue`;
 - `entry` 编译入口默认 `src`
 
 示例:
@@ -60,12 +60,6 @@ $ npm install lilith-cli -g
 - `$ lilith run dev test`  // 以根目录下 `test`目录为入口
 - `$ lilith run build`
 - `$ lilith run template`
-- `$ lilith run dev --source=react`
-- `$ lilith run dev --source=vue`
-- `$ lilith run dev -s=vue`
-- `$ lilith run template --source=vue`
-
-
 
 ### compile
 

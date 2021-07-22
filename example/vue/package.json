@@ -16,7 +16,7 @@
     "vue": "^2.6.11"
   },
   "devDependencies": {
-    "lilith-compiler": "^1.2.3",
+    "lilith-compiler": "^1.3.0",
     "lilith-compiler-vue": "^1.2.5"
   }
 }
