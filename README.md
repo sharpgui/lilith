@@ -1,10 +1,12 @@
 # Lilith
 
+[![](https://badge.fury.io/js/lilith-cli.svg)](http://badge.fury.io/js/lilith-cli)
+
 命令行工具：1. 零配置编译react & vue （类似creat-react-app)2. 便捷的创建页面模板(类似umiblock）；
 
 ## 提供的功能
 
-- 零配置webpack编译，支持React与Vue两种编译方式（默认Reac编译模式）
+- 零配置webpack编译，支持React与Vue两种编译方式（自动识别项目是React或者Vue）
 - 支持TypeScript
 - 页面模板构建，独立运行模板
 - 定制自己的零配置编译工具
