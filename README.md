@@ -84,6 +84,8 @@ lilith 创建命令，根据命令提示，创建项目脚手架或者项目模�
 
 根据模板创建新页面，模板默认目录：当前项目的根目录下的`_template`目录，获取项目模板[更多用法详见](https://github.com/advence-liz/quickly-template)；
 
+默认提供两个模板`react`、`vue` [模板内容详见](https://github.com/sharpgui/lilith/tree/master/packages/lilith-cli/_template)
+
 `$ lilith new <template> <name> [target]`
 
 - `<template>` 模板页面，支持简写（需满足startsWith）

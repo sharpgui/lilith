@@ -24,11 +24,6 @@ program
     config.context
   )
   .option(
-    '--target <string>',
-    '新生成模块的输出路径，相对process.cwd(),默认"."',
-    '.'
-  )
-  .option(
     '--template <string>',
     '当前使用的模板，模板可选范围即root下面指定的模板，支持简写如模板page那么p,pa,pag等效'
   )
@@ -45,7 +40,7 @@ program
   .command('new <template> <name> [target]')
   .description('Lilith 模板创建命令')
   .action(function(template, name) {
-    const { target, context, root } = program.opts()
+    const { target = '.', context, root } = program.opts()
     newTemplate({ template, name, target, context, root })
   })
 
