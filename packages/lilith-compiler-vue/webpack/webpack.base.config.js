@@ -68,21 +68,21 @@ module.exports = {
   },
   plugins: isProd
     ? [
-      new HtmlWebpackPlugin({
-        template: path.join(__dirname, '..', '/public/views/index.html'),
-        favicon: path.join(__dirname, '..', '/public/icon/favicon.ico')
-      }),
-      new VueLoaderPlugin(),
-      new webpack.optimize.UglifyJsPlugin({
-        compress: { warnings: false }
-      }),
-      new webpack.optimize.ModuleConcatenationPlugin()
-    ]
+        new HtmlWebpackPlugin({
+          template: path.join(__dirname, '..', '/public/views/index.html'),
+          favicon: path.join(__dirname, '..', '/public/icon/favicon.ico')
+        }),
+        new VueLoaderPlugin(),
+        new webpack.optimize.UglifyJsPlugin({
+          compress: { warnings: false }
+        }),
+        new webpack.optimize.ModuleConcatenationPlugin()
+      ]
     : [
-      new HtmlWebpackPlugin({
-        template: path.join(__dirname, '..', '/public/views/index.html'),
-        favicon: path.join(__dirname, '..', '/public/icon/favicon.ico')
-      }),
-      new VueLoaderPlugin()
-    ]
+        new HtmlWebpackPlugin({
+          template: path.join(__dirname, '..', '/public/views/index.html'),
+          favicon: path.join(__dirname, '..', '/public/icon/favicon.ico')
+        }),
+        new VueLoaderPlugin()
+      ]
 }

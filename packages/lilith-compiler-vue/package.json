@@ -4,7 +4,8 @@
   "description": "lilith vue 编译模板",
   "main": "index.js",
   "scripts": {
-    "dev": "node lib/run.js dev"
+    "dev": "node lib/run.js dev",
+    "build": "node lib/run.js prod && npx es-check es5 dist/**/*.js"
   },
   "keywords": [
     "cli",

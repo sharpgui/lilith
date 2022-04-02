@@ -5,7 +5,7 @@
     <p>computed msg: {{ computedMsg }}</p>
   </div>
 </template>
-<script lang="ts">
+<script>
 import Vue from 'vue'
 import Component from 'vue-class-component'
 
