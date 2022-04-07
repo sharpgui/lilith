@@ -4,7 +4,8 @@
   "description": "lilith react 编译模板",
   "main": "index.js",
   "scripts": {
-    "dev": "node lib/run.js dev"
+    "dev": "node lib/run.js dev",
+    "build": "node lib/run.js prod && npx es-check es5 dist/**/*.js"
   },
   "keywords": [
     "cli",
@@ -33,7 +34,7 @@
     "css-loader": "^3.2.0",
     "cssnano": "^4.1.10",
     "html-webpack-plugin": "^3.2.0",
-    "node-sass-install": "^1.0.2",
+    "node-sass": "^4.14.1",
     "postcss-loader": "^3.0.0",
     "quickly-template": "^1.2.2",
     "raw-loader": "^4.0.1",
