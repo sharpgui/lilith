@@ -25,6 +25,7 @@ module.exports = function(webpackSettings) {
       aggregateTimeout: 300,
       poll: 1000
     },
+    disableHostCheck: true,
     overlay: true
     // host: '0.0.0.0'
     // useLocalIp: true
